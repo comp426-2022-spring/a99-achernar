@@ -1,0 +1,5 @@
+{
+    "presets": ["@babel/preset-react"]
+  }
+
+// Don't move this config file out of /src/, needed for .jsx file support (directly write HTML in React.js code)
