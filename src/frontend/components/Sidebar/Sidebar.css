@@ -1,0 +1,5 @@
+.Sidebar {
+    flex: 1;
+    height: calc(100vh - 50px); /* to prevent overflow */
+    
+}

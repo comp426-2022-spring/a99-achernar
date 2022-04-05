@@ -1,0 +1,7 @@
+.container {
+    display: flex;
+}
+
+.temp {
+    flex: 4; /* 4 times the size of the side bar which has flex 1 */
+}

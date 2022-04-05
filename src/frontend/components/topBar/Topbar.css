@@ -1,7 +1,10 @@
 .Topbar{
     width: 100%;
-    height: 50px;
+    height: 70px;
     background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 999; /* components will not overlap with top bar */
 }
 
 .topbarWrapper{
@@ -50,4 +53,5 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
+    cursor: pointer;
 }
