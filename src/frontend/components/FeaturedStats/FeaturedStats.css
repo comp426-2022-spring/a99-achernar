@@ -1,0 +1,63 @@
+.featured {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.featuredItem {
+    flex: 1;
+    margin: 10px 20px;
+    padding: 30px;
+    border-radius: 10px;
+    -webkit-box-shadow: -5px 5px 8px 5px #6cbceb; 
+    box-shadow: -5px 5px 8px 5px #6cbceb;
+}
+
+.featuredTitle {
+    font-size: 20px;
+}
+
+.featuredBoxContainer {
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.featuredNum {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.featuredRate {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+.featuredPrevious {
+    margin-left: 140px;
+    font-size: 25px;
+    color: #696969;
+}
+
+.featuredSubPrev {
+    margin-left: 200px;
+    color: #696969;
+}
+
+.featuredSubtitle {
+    color: #696969;
+}
+
+.featuredPreviousMillion {
+    margin-left: 40px;
+    font-size: 20px;
+    color: #696969;
+}
+
+.featuredPreviousVisits {
+    margin-left: 185px;
+    font-size: 25px;
+    color: #696969;
+}

@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import {Home, LineStyle, Newspaper, List} from '@mui/icons-material';
+import {Home, Equalizer, Newspaper, List, Map, ChatBubble, Notifications, Coronavirus} from '@mui/icons-material';
 
 export default function Sidebar() {
   return (
@@ -9,28 +9,58 @@ export default function Sidebar() {
                 <h3 className="SidebarTitle">Dashboard</h3>
                 <ul className="SidebarList">
                     <li className="SidebarListItem">
-                        <Home/>
-                        Overview
+                        <Home className="SidebarIcon"/>
+                        Overview 
                     </li>
                     <li className="SidebarListItem">
-                        <Newspaper/>
+                        <Equalizer className="SidebarIcon"/>
+                        Vaccine Statistics
+                    </li>
+                    <li className="SidebarListItem">
+                        <Coronavirus className="SidebarIcon"/>
+                        Outbreaks
+                    </li>
+                </ul>
+            </div>
+
+            <div className="SidebarMenu">
+                <h3 className="SidebarTitle">Resources</h3>
+                <ul className="SidebarList">
+                    <li className="SidebarListItem">
+                        <Newspaper className="SidebarIcon"/>
                         News
                     </li>
                     <li className="SidebarListItem">
-                        <List/>
-                        Symptoms
+                        <List className="SidebarIcon"/>
+                        FAQ & Symptoms
                     </li>
                     <li className="SidebarListItem">
-                        <LineStyle/>
+                        <Map className="SidebarIcon"/>
                         Testing Sites
                     </li>
+                </ul>
+
+                
+            </div>
+
+            <div className="SidebarMenu">
+                <h3 className="SidebarTitle">Notifications</h3>
+                <ul className="SidebarList">
                     <li className="SidebarListItem">
-                        <LineStyle/>
-                        This sidebar looks like trash
+                        <Home className="SidebarIcon"/>
+                        My Account
                     </li>
                     <li className="SidebarListItem">
-                        <LineStyle/>
-                        and is not completed
+                        <Map className="SidebarIcon"/>
+                        My Testing Sites
+                    </li>
+                    <li className="SidebarListItem">
+                        <ChatBubble className="SidebarIcon"/>
+                        Messages
+                    </li>
+                    <li className="SidebarListItem">
+                        <Notifications className="SidebarIcon"/>
+                        Notifications
                     </li>
                 </ul>
             </div>

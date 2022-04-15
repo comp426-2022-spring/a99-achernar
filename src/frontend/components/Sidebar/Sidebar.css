@@ -1,5 +1,44 @@
 .Sidebar {
     flex: 1;
-    height: calc(100vh - 50px); /* to prevent overflow */
-    
+    height: calc(100vh - 70px); /* to prevent overflow */
+    background-color: #f3fcfb;
+    position: sticky;
+    border-radius: 10px;
+}
+
+.SidebarWrapper {
+    padding: 20px;
+    color: #696969;
+}
+
+.SidebarMenu {
+    margin-bottom: 60px;
+}
+
+.SidebarTitle {
+    font-size: 25px;
+    color: #a9a9a9;
+}
+
+.SidebarList {
+    list-style: none;
+    padding: 5px;
+}
+
+.SidebarListItem {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.SidebarListItem:hover{
+    background-color: #b1d4f5;
+}
+
+.SidebarIcon {
+    margin-right: 5px;
+    font-size: 25px !important;
 }
