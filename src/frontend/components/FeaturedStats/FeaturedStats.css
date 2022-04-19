@@ -9,8 +9,8 @@
     margin: 10px 20px;
     padding: 30px;
     border-radius: 10px;
-    -webkit-box-shadow: -5px 5px 8px 5px #6cbceb; 
-    box-shadow: -5px 5px 8px 5px #6cbceb;
+    -webkit-box-shadow: -5px 5px 8px 5px #D0D1CA; 
+    box-shadow: -5px 5px 8px 5px #D0D1CA; /*#6cbceb*/
 }
 
 .featuredTitle {

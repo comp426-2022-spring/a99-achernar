@@ -1,18 +1,18 @@
 import React from 'react'
 import "./Topbar.css"
-import {NotificationsNone, Settings} from '@mui/icons-material';
+import {Settings} from '@mui/icons-material';
 
 export default function Topbar() {
   return (
     <div className='Topbar'>
         <div className="topbarWrapper">
             <div className="topLeft">
-                <span className="logo">COVID-19 Dashboard</span>
+                <span className="logo">North Carolina COVID-19 Dashboard</span>
             </div>
             <div className="topRight">
                 <div className="topbarIcons">
-                    <NotificationsNone />
-                    <span className="topbarIconBadge">2</span>
+                    {/*<NotificationsNone />*/}
+                    {/*<span className="topbarIconBadge">2</span>*/}
                 </div>
                 <div className="topbarIcons">
                     <Settings />

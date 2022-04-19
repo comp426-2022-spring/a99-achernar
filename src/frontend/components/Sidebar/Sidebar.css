@@ -1,9 +1,8 @@
 .Sidebar {
     flex: 1;
-    height: calc(100vh - 70px); /* to prevent overflow */
-    background-color: #f3fcfb;
+    height: auto; /* to prevent overflow */
+    background-color: #f0f0f0;
     position: sticky;
-    border-radius: 10px;
 }
 
 .SidebarWrapper {
@@ -12,7 +11,7 @@
 }
 
 .SidebarMenu {
-    margin-bottom: 60px;
+    margin-bottom: 25%;
 }
 
 .SidebarTitle {
@@ -41,4 +40,20 @@
 .SidebarIcon {
     margin-right: 5px;
     font-size: 25px !important;
+}
+
+/*make new sections to put bubble on messages*/
+.topbarIconBadge{
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
 }

@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import {Home, Equalizer, Newspaper, List, Map, ChatBubble, Notifications, Coronavirus} from '@mui/icons-material';
+import {Home, Equalizer, Newspaper, List, Map, ChatBubble, Notifications, Coronavirus, Healing} from '@mui/icons-material';
 
 export default function Sidebar() {
   return (
@@ -24,7 +24,7 @@ export default function Sidebar() {
             </div>
 
             <div className="SidebarMenu">
-                <h3 className="SidebarTitle">Resources</h3>
+                <h3 className="SidebarTitle">Public Resources</h3>
                 <ul className="SidebarList">
                     <li className="SidebarListItem">
                         <Newspaper className="SidebarIcon"/>
@@ -32,11 +32,15 @@ export default function Sidebar() {
                     </li>
                     <li className="SidebarListItem">
                         <List className="SidebarIcon"/>
-                        FAQ & Symptoms
+                        FAQ
                     </li>
-                    <li className="SidebarListItem">
+                    {/*<li className="SidebarListItem">
                         <Map className="SidebarIcon"/>
                         Testing Sites
+                    </li>*/}
+                    <li className="SidebarListItem">
+                        <Healing className="SidebarIcon"/>
+                        Symptoms
                     </li>
                 </ul>
 
@@ -50,12 +54,13 @@ export default function Sidebar() {
                         <Home className="SidebarIcon"/>
                         My Account
                     </li>
-                    <li className="SidebarListItem">
+                    {/*<li className="SidebarListItem">
                         <Map className="SidebarIcon"/>
                         My Testing Sites
-                    </li>
+                    </li>*/}
                     <li className="SidebarListItem">
                         <ChatBubble className="SidebarIcon"/>
+                        <span className="topbarIconBadge">2</span> 
                         Messages
                     </li>
                     <li className="SidebarListItem">
