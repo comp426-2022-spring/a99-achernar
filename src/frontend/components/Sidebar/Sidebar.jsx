@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import {Home, Equalizer, Newspaper, List, Map, ChatBubble, Notifications, Coronavirus, Healing} from '@mui/icons-material';
+import {Home, Equalizer, Newspaper, List, ChatBubble, Notifications, Coronavirus, Healing} from '@mui/icons-material';
 
 export default function Sidebar() {
   return (
