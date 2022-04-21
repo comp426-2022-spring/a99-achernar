@@ -40,6 +40,13 @@ app.get('/app/', (req, res) => {
     res.end(res.statusCode + ' ' + res.statusMessage);
 });
 
+// Endpoint for getting statewide data in JSON format
+app.get('/app/state/', (req, req) => {
+    res.statusCode = 200;
+
+
+})
+
 // default endpoint
 app.use(function(req, res){
     res.status(404).send("404 NOT FOUND");
