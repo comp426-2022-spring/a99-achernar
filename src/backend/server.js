@@ -1,13 +1,19 @@
 const express = require("express");
 const app = express();
 const {db, dbInit} = require("./database");
+var csv = require('jquery-csv');
+const fs = require('fs');
+// const { stringify } = require("querystring");
+const parser = require('csv-parser');
+const results = [];
+fs.createReadStream('./data/state.csv');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 function appServer() {
     dbInit();
-    const port = 5000;
+    const port = 5555;
     app.listen(port, () => {
         console.log(`App is running on port 5000`);
     });
@@ -41,11 +47,20 @@ app.get('/app/', (req, res) => {
 });
 
 // Endpoint for getting statewide data in JSON format
-app.get('/app/state/', (req, req) => {
+app.get('/app/state/', (req, res) => {
     res.statusCode = 200;
 
+    fs.readFile('./data/state.csv','utf8', function(err,data){
+        console.log(csv.toArray(data))
+    });
+})
+
+// Endpoint for getting county-wide data in JSON format
+app.get('/app/county', (req, res) => {
 
 })
+
+
 
 // default endpoint
 app.use(function(req, res){

@@ -25,6 +25,7 @@ function dbInit() {
                 age TEXT,
                 profilepic TEXT,
                 admin TEXT
+                password TEXT
             );
         `;
         db.exec(accountInit);
