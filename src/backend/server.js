@@ -6,7 +6,7 @@ const fs = require('fs');
 // const { stringify } = require("querystring");
 const parser = require('csv-parser');
 const results = [];
-fs.createReadStream('./data/state.csv');
+fs.createReadStream('./src/backend/data/state.csv');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -15,7 +15,7 @@ function appServer() {
     dbInit();
     const port = 5555;
     app.listen(port, () => {
-        console.log(`App is running on port 5000`);
+        console.log(`App is running on port 5555`);
     });
 }
 
@@ -50,14 +50,27 @@ app.get('/app/', (req, res) => {
 app.get('/app/state/', (req, res) => {
     res.statusCode = 200;
 
-    fs.readFile('./data/state.csv','utf8', function(err,data){
-        console.log(csv.toArray(data))
+    fs.readFile('./src/backend/data/state.csv','utf8', function(err,data){
+        var dataArray = data.split(/\r?\n/);
+        console.log(csv.toArray(dataArray))
     });
 })
 
 // Endpoint for getting county-wide data in JSON format
-app.get('/app/county', (req, res) => {
+app.get('/app/county/', (req, res) => {
+    res.statusCode = 200;
 
+    var sample = './src/backend/data/county.csv';
+
+    fs.readFile(sample, 'UTF-8', function (err, csv) {
+      if (err) { console.log(err); }
+      csv.toArray(csv, {}, function (err, data) {
+        if (err) { console.log(err); }
+        for (var i = 0, len = data.length; i < len; i++) {
+          console.log(data[i]);
+        }
+      });
+    });
 })
 
 
