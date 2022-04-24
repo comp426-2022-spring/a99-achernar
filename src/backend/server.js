@@ -35,7 +35,7 @@ app.get('/app/logs', (req, res) => {
     }
 });
 
-// define check endpoint - TO DO: link to React homepage
+// define check endpoint
 app.get('/app/', (req, res) => {
     //respond with status 200
     res.statusCode = 200;
@@ -72,8 +72,6 @@ app.get('/app/county/', (req, res) => {
       });
     });
 })
-
-
 
 // default endpoint
 app.use(function(req, res){
