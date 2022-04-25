@@ -4,8 +4,9 @@ const {db, dbInit} = require("./database");
 var csv = require('jquery-csv');
 const fs = require('fs');
 // const { stringify } = require("querystring");
-const parser = require('csv-parser');
-const results = [];
+// const parser = require('csv-parser');
+
+// const results = [];
 fs.createReadStream('./src/backend/data/state.csv');
 
 app.use(express.json());
@@ -23,7 +24,24 @@ function appServer() {
 appServer();
 
 // TO DO: middleware function(s) that inserts into database
-//app.use((req, res, next) => {});
+// log database middleware
+app.use((req, res, next) => {
+    let logdata = {
+        remoteaddr: req.ip,
+        remoteuser: req.user,
+        time: Date.now(),
+        method: req.method,
+        url: req.url,
+        protocol: req.protocol,
+        httpversion: req.httpVersion,
+        status: res.statusCode,
+        referer: req.headers['referer'],
+        useragent: req.headers['user-agent']
+    };
+    const stmt = db.prepare(`INSERT INTO accesslog (remoteaddr, remoteuser, time, method, url, protocol, httpversion, status, referer, useragent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+    stmt.run(Object.values(logdata));
+    next();
+});
 
 // debug endpoint for interaction logs - TO DO: restrict to admins only
 app.get('/app/logs', (req, res) => {
