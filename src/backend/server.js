@@ -1,16 +1,12 @@
 const express = require("express");
 const app = express();
-const {db, dbInit} = require("./database");
-var csv = require('jquery-csv');
-const fs = require('fs');
-// const { stringify } = require("querystring");
-// const parser = require('csv-parser');
-
-// const results = [];
-fs.createReadStream('./src/backend/data/state.csv');
+const { db, dbInit } = require("./database");
+const fs = require("fs");
+const { parse } = require("csv-parse");
+const path = require("path");
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 function appServer() {
     dbInit();
@@ -23,7 +19,7 @@ function appServer() {
 // start up the server
 appServer();
 
-// TO DO: middleware function(s) that inserts into database
+// TO DO: more middleware functions that insert into database
 // log database middleware
 app.use((req, res, next) => {
     let logdata = {
@@ -35,16 +31,39 @@ app.use((req, res, next) => {
         protocol: req.protocol,
         httpversion: req.httpVersion,
         status: res.statusCode,
-        referer: req.headers['referer'],
-        useragent: req.headers['user-agent']
+        referer: req.headers["referer"],
+        useragent: req.headers["user-agent"],
     };
-    const stmt = db.prepare(`INSERT INTO accesslog (remoteaddr, remoteuser, time, method, url, protocol, httpversion, status, referer, useragent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+    const stmt = db.prepare(
+        `INSERT INTO accesslog (remoteaddr, remoteuser, time, method, url, protocol, httpversion, status, referer, useragent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    );
     stmt.run(Object.values(logdata));
     next();
 });
 
+// counties database middleware
+app.use((req, res, next) => {
+    const coolPath = path.join(__dirname, "./data/county.csv");
+    fs.createReadStream(coolPath)
+        .pipe(parse({ delimiter: ",", from_line: 2 }))
+        .on("data", function (row) {
+            let countydata = {
+                rownumber: row[0],
+                date: row[1],
+                county: row[2],
+                dailycases: row[3],
+                deaths: row[4]
+            };
+            const stmt = db.prepare(
+                `INSERT INTO counties (rownumber, date, county, dailycases, deaths) VALUES (?, ?, ?, ?, ?)`
+            );
+            stmt.run(Object.values(countydata));
+        });
+    next();
+});
+
 // debug endpoint for interaction logs - TO DO: restrict to admins only
-app.get('/app/logs', (req, res) => {
+app.get("/app/logs", (req, res) => {
     try {
         const stmt = db.prepare(`SELECT * FROM accesslog`).all();
         res.status(200).json(stmt);
@@ -54,48 +73,32 @@ app.get('/app/logs', (req, res) => {
 });
 
 // define check endpoint
-app.get('/app/', (req, res) => {
+app.get("/app", (req, res) => {
     //respond with status 200
     res.statusCode = 200;
 
     //respond with status message "OK"
-    res.statusMessage = 'OK';
-    res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
-    res.end(res.statusCode + ' ' + res.statusMessage);
+    res.statusMessage = "OK";
+    res.writeHead(res.statusCode, { "Content-Type": "text/plain" });
+    res.end(res.statusCode + " " + res.statusMessage);
 });
 
 // Endpoint for getting statewide data in JSON format
-app.get('/app/state/', (req, res) => {
+app.get("/app/state/", (req, res) => {
     res.statusCode = 200;
-
-    fs.readFile('./src/backend/data/state.csv','utf8', function(err,data){
-        var dataArray = data.split(/\r?\n/);
-        console.log(csv.toArray(dataArray))
-    });
-})
+});
 
 // Endpoint for getting county-wide data in JSON format
-app.get('/app/county/', (req, res) => {
-    res.statusCode = 200;
-
-    var sample = './src/backend/data/county.csv';
-
-    fs.readFile(sample, 'UTF-8', function (err, csv) {
-      if (err) { console.log(err); }
-      csv.toArray(csv, {}, function (err, data) {
-        if (err) { console.log(err); }
-        for (var i = 0, len = data.length; i < len; i++) {
-          console.log(data[i]);
-        }
-      });
-    });
-})
-
-app.get('', (req, res) => {
-    res.status(404).send("404 NOT FOUND");
-})
+app.get("/app/county/", (req, res) => {
+    try {
+        const stmt = db.prepare(`SELECT * FROM counties`).all();
+        res.status(200).json(stmt);
+    } catch (e) {
+        console.error(e);
+    }
+});
 
 // default endpoint
-app.use(function(req, res){
+app.use("*", (req, res) => {
     res.status(404).send("404 NOT FOUND");
 });

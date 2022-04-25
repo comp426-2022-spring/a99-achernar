@@ -21,11 +21,12 @@ function dbInit() {
                 id INTEGER PRIMARY KEY,
                 name TEXT,
                 username TEXT,
+                password TEXT,
                 emailaddr TEXT,
                 age TEXT,
+                county TEXT,
                 profilepic TEXT,
                 admin TEXT
-                password TEXT
             );
         `;
         db.exec(accountInit);
@@ -57,16 +58,17 @@ function dbInit() {
     }
     
     if (countyRow === undefined) {
-        const logInit = `
+        const countyInit = `
             CREATE TABLE counties (
                 id INTEGER PRIMARY KEY,
+                rownumber NUMBER,
+                date TEXT,
                 county TEXT,
                 dailycases NUMBER,
-                biweeklychange NUMBER,
-                fullyvax NUMBER
+                deaths NUMBER
             );    
         `;
-        db.exec(logInit);
+        db.exec(countyInit);
         console.log("County database has been created.");
     } else {
         console.log("County database already exists.");
