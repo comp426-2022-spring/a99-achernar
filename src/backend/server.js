@@ -73,6 +73,10 @@ app.get('/app/county/', (req, res) => {
     });
 })
 
+app.get('', (req, res) => {
+    res.status(404).send("404 NOT FOUND");
+})
+
 // default endpoint
 app.use(function(req, res){
     res.status(404).send("404 NOT FOUND");
