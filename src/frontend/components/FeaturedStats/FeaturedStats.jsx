@@ -6,21 +6,49 @@ export default class FeaturedStats extends Component {
     constructor() {
         super();
         this.state = {
-            percentage: "54%"
+            data: [],
+            finishedLoading: false
         };
     }
 
+    async componentDidMount() {
+        await fetch("/app/state", {
+            method: "GET",
+            headers: { "Content-Type": "application/json"}
+        })
+        .then(async res => {
+            const data = await res.json();
+            this.setState({data: data, finishedLoading: true}, () => {
+                console.log(this.state.data);
+            });
+        })
+        .catch(function(err) {
+            console.log(err.message);
+        })
+    }
+
     render() {
+        const {data, finishedLoading} = this.state;
+        if (!finishedLoading) {
+            return <div >
+                <h1>Loading...</h1>
+            </div>
+        }
         return (
             <div className="featured">
                 <div className="featuredItem">
                     <span className="featuredTitle">Reported Cases</span>
                     <div className="featuredBoxContainer">
-                        <span className="featuredNum">4,741</span>
-                        <span className="featuredRate">
-                            {this.state.percentage} <ArrowDropUp />
+                        <span className="featuredNum" key="data[0].id">
+                            {data[0].positive}
                         </span>
-                        <span className="featuredPrevious">3,074</span>
+                        <span className="featuredRate">
+                            {Math.floor((data[1].positive / data[0].positive - 1) * 100)}%
+                            {data[0].positive > data[1].positive ? <ArrowDropUp/> : <ArrowDropDown/>}
+                        </span>
+                        <span className="featuredPrevious" key="data[1].id">
+                            {data[1].positive}
+                        </span>
                     </div>
                     <span className="featuredSubtitle">Updated weekly</span>
                     <span className="featuredSubPrev">Previous Week</span>
