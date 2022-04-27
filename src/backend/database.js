@@ -13,10 +13,6 @@ function dbInit() {
     const stateStmt = db.prepare(
         `SELECT name FROM sqlite_master WHERE type='table' AND name='state';`
     );
-    
-    // db.exec(`DROP TABLE IF EXISTS accesslog`);
-    // db.exec(`DROP TABLE IF EXISTS counties`);
-    // db.exec(`DROP TABLE IF EXISTS state`);
 
     let accountRow = accountStmt.get();
     let logRow = logStmt.get();

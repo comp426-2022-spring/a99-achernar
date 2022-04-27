@@ -8,16 +8,8 @@ const path = require("path");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-function appServer() {
-    dbInit();
-    const port = 5555;
-    app.listen(port, () => {
-        console.log(`App is running on port 5555`);
-    });
-}
-
-// start up the server
-appServer();
+// check if databases have been created
+dbInit();
 
 // TO DO: more middleware functions that insert into database
 // log database middleware
@@ -82,7 +74,7 @@ app.use((req, res, next) => {
 });
 
 // debug endpoint for interaction logs - TO DO: restrict to admins only
-app.get("/app/logs", (req, res) => {
+app.get("/api/logs", (req, res) => {
     try {
         const stmt = db.prepare(`SELECT * FROM accesslog`).all();
         res.status(200).json(stmt);
@@ -103,7 +95,7 @@ app.get("/app", (req, res) => {
 });
 
 // Endpoint for getting statewide data in JSON format
-app.get("/app/state/", (req, res) => {
+app.get("/api/state/", (req, res) => {
     try {
         //selects only the 2 most updated case counts
         const stmt = db.prepare(`SELECT Positive FROM state LIMIT 2`).all();
@@ -114,7 +106,7 @@ app.get("/app/state/", (req, res) => {
 });
 
 // Endpoint for getting county-wide data in JSON format
-app.get("/app/county/", (req, res) => {
+app.get("/api/county/", (req, res) => {
     try {
         const stmt = db.prepare(`SELECT * FROM counties`).all();
         res.status(200).json(stmt);
@@ -124,6 +116,12 @@ app.get("/app/county/", (req, res) => {
 });
 
 // default endpoint
-app.use("*", (req, res) => {
+app.all("*", (req, res) => {
     res.status(404).send("404 NOT FOUND");
+});
+
+// start up the server
+const port = 5555;
+app.listen(port, () => {
+    console.log(`App is running on port 5555`);
 });
