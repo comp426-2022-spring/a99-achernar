@@ -62,6 +62,25 @@ app.use((req, res, next) => {
     next();
 });
 
+// state database middleware
+app.use((req, res, next) => {
+    const coolPath = path.join(__dirname, "./data/state.csv");
+    fs.createReadStream(coolPath)
+        .pipe(parse({ delimiter: ",", from_line: 2}))
+        .on("data", function (row) {
+            let statedata = {
+                date: row[0],
+                positive: row[1],
+                deaths: row[2]
+            };
+            const stmt = db.prepare(
+                `INSERT INTO state (date, positive, deaths) VALUES (?, ?, ?)`
+            );
+            stmt.run(Object.values(statedata));
+        });
+    next();
+});
+
 // debug endpoint for interaction logs - TO DO: restrict to admins only
 app.get("/app/logs", (req, res) => {
     try {
@@ -85,7 +104,13 @@ app.get("/app", (req, res) => {
 
 // Endpoint for getting statewide data in JSON format
 app.get("/app/state/", (req, res) => {
-    res.statusCode = 200;
+    try {
+        //selects only the 2 most updated case counts
+        const stmt = db.prepare(`SELECT Positive FROM state LIMIT 2`).all();
+        res.status(200).json(stmt);
+    } catch (e) {
+        console.error(e);
+    }
 });
 
 // Endpoint for getting county-wide data in JSON format

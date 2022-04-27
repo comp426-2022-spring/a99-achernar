@@ -10,10 +10,18 @@ function dbInit() {
     const countyStmt = db.prepare(
         `SELECT name FROM sqlite_master WHERE type='table' AND name='counties';`
     );
+    const stateStmt = db.prepare(
+        `SELECT name FROM sqlite_master WHERE type='table' AND name='state';`
+    );
     
+    // db.exec(`DROP TABLE IF EXISTS accesslog`);
+    // db.exec(`DROP TABLE IF EXISTS counties`);
+    // db.exec(`DROP TABLE IF EXISTS state`);
+
     let accountRow = accountStmt.get();
     let logRow = logStmt.get();
     let countyRow = countyStmt.get();
+    let stateRow = stateStmt.get();
     
     if (accountRow === undefined) {
         const accountInit = `
@@ -72,6 +80,21 @@ function dbInit() {
         console.log("County database has been created.");
     } else {
         console.log("County database already exists.");
+    }
+
+    if (stateRow === undefined) {
+        const stateInit = `
+            CREATE TABLE state (
+                id INTEGER PRIMARY KEY,
+                date TEXT,
+                positive NUMBER,
+                deaths NUMBER
+            );      
+        `;
+        db.exec(stateInit);
+        console.log("State database has been created.");
+    } else {
+        console.log("State database already exists.")
     }
 }
 
