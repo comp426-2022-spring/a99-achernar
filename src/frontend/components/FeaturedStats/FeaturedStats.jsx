@@ -15,7 +15,7 @@ export default class FeaturedStats extends Component {
     async componentDidMount() {
         await axios.get("/api/state")
         .then(res => {
-            const data = res.json();
+            const data = res.data;
             this.setState({data: data, finishedLoading: true}, () => {
                 console.log(this.state.data);
             });
