@@ -13,7 +13,9 @@ export default function Sidebar() {
                 <div className="SidebarMenu">
                     <h3 className="SidebarTitle">Dashboard</h3>
                     <ul className="SidebarList">
-                        <li className="SidebarListItem">
+                        <li onClick={() => {
+                            navigate("/app")
+                        }} className="SidebarListItem">
                             <Home className="SidebarIcon" />
                             Overview
                         </li>
@@ -29,7 +31,7 @@ export default function Sidebar() {
                              navigate("/user")
                         }} className="SidebarListItem">
                             <Person className="SidebarIcon" />
-                            users
+                            Users
                         </li>
                     </ul>
                 </div>

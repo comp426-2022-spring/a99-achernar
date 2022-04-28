@@ -12,13 +12,13 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
+// import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import sty from './user.module.css';
 
-import {
-    useNavigate,
-} from "react-router-dom";
+// import {
+//     useNavigate,
+// } from "react-router-dom";
 
 export default function Users() {
     const [open, setOpen] = useState(false);
@@ -39,8 +39,8 @@ export default function Users() {
     const [tableData, setTableData] = useState([]);
 
     const getTableData = () => {
-        axios.get("/app/getUserList").then((res) => {
-            if (res.data.code == -1) {
+        axios.get("/api/getUserList").then((res) => {
+            if (res.data.code === -1) {
                 alert(res.data.msg)
             } else {
                 console.log("user res = ", res)
@@ -66,143 +66,147 @@ export default function Users() {
     }, [open])
 
     return (
-        <div className={sty.box}>
-            <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Edit User</DialogTitle>
-                <DialogContent>
-                    <TextField
-                        style={{
-                            width: '400px'
-                        }}
-                        fullWidth
-                        variant="standard"
-                        value={name}
-                        onChange={(e) => {
-                            setName(e.target.value)
-                        }}
-                        label="name"
-                    />
-                    <TextField
-                        style={{
-                            width: '400px'
-                        }}
-                        fullWidth
-                        variant="standard"
-                        value={emailaddr}
-                        onChange={(e) => {
-                            setEmailaddr(e.target.value)
-                        }}
-                        label="emailaddr"
-                    />
-                    <TextField
-                        style={{
-                            width: '400px'
-                        }}
-                        fullWidth
-                        variant="standard"
-                        value={age}
-                        onChange={(e) => {
-                            setAge(e.target.value)
-                        }}
-                        label="age"
-                    />
-                    <TextField
-                        style={{
-                            width: '400px'
-                        }}
-                        fullWidth
-                        variant="standard"
-                        value={county}
-                        onChange={(e) => {
-                            setCounty(e.target.value)
-                        }}
-                        label="county"
-                    />
+        <div style={{
+            flex: 4
+          }}>
+            <div className={sty.box}>
+                <Dialog open={open} onClose={handleClose}>
+                    <DialogTitle>Edit User</DialogTitle>
+                    <DialogContent>
+                        <TextField
+                            style={{
+                                width: '400px'
+                            }}
+                            fullWidth
+                            variant="standard"
+                            value={name}
+                            onChange={(e) => {
+                                setName(e.target.value)
+                            }}
+                            label="name"
+                        />
+                        <TextField
+                            style={{
+                                width: '400px'
+                            }}
+                            fullWidth
+                            variant="standard"
+                            value={emailaddr}
+                            onChange={(e) => {
+                                setEmailaddr(e.target.value)
+                            }}
+                            label="emailaddr"
+                        />
+                        <TextField
+                            style={{
+                                width: '400px'
+                            }}
+                            fullWidth
+                            variant="standard"
+                            value={age}
+                            onChange={(e) => {
+                                setAge(e.target.value)
+                            }}
+                            label="age"
+                        />
+                        <TextField
+                            style={{
+                                width: '400px'
+                            }}
+                            fullWidth
+                            variant="standard"
+                            value={county}
+                            onChange={(e) => {
+                                setCounty(e.target.value)
+                            }}
+                            label="county"
+                        />
 
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={() => {
-                        // edit
-                        axios.post("/app/updateUser", {
-                            id: currentItem.id,
-                            name, emailaddr, age, county
-                        }).then((res) => {
-                            if (res.data.code == -1) {
-                                alert(res.data.msg)
-                            } else {
-                                getTableData();
-                                setOpen(false);
-                            }
-                        }).catch(() => {
-                            alert("server is error")
-                        })
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Cancel</Button>
+                        <Button onClick={() => {
+                            // edit
+                            axios.post("/app/updateUser", {
+                                id: currentItem.id,
+                                name, emailaddr, age, county
+                            }).then((res) => {
+                                if (res.data.code === -1) {
+                                    alert(res.data.msg)
+                                } else {
+                                    getTableData();
+                                    setOpen(false);
+                                }
+                            }).catch(() => {
+                                alert("server is error")
+                            })
 
-                    }}>Enter</Button>
-                </DialogActions>
-            </Dialog>
+                        }}>Enter</Button>
+                    </DialogActions>
+                </Dialog>
 
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>name</TableCell>
-                            <TableCell align="right">username</TableCell>
-                            <TableCell align="right">emailaddr</TableCell>
-                            <TableCell align="right">age</TableCell>
-                            <TableCell align="right">county</TableCell>
-                            <TableCell align="right">operation</TableCell>
-                        </TableRow>
-                    </TableHead>
-
-                    <TableBody>
-
-                        {tableData.map((row) => (
-                            <TableRow
-                                key={row.name}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row">
-                                    {row.name}
-                                </TableCell>
-                                <TableCell align="right">{row.username}</TableCell>
-                                <TableCell align="right">{row.emailaddr}</TableCell>
-                                <TableCell align="right">{row.age}</TableCell>
-                                <TableCell align="right">{row.county}</TableCell>
-                                <TableCell align="right">
-                                    <Button onClick={() => {
-                                        handleClickOpen(row)
-                                    }} style={{
-                                        marginRight: 20
-                                    }}>EDIT</Button>
-                                    <Button onClick={() => {
-                                        // delete
-                                        axios.post("/app/deleteUser", {
-                                            id: row.id,
-    
-                                        }).then((res) => {
-                                            if (res.data.code == -1) {
-                                                alert(res.data.msg)
-                                            } else {
-                                                getTableData();
-                                            }
-                                        }).catch(() => {
-                                            alert("server is error")
-                                        })
-                                    }} color="error" style={{
-                                        marginRight: 20
-                                    }}>DELETE</Button>
-                                </TableCell>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>name</TableCell>
+                                <TableCell align="right">username</TableCell>
+                                <TableCell align="right">emailaddr</TableCell>
+                                <TableCell align="right">age</TableCell>
+                                <TableCell align="right">county</TableCell>
+                                <TableCell align="right">operation</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            {!tableData.length && (
-                <div className={sty.emptyBox}>
-                    no data
-                </div>
-            )}
+                        </TableHead>
+
+                        <TableBody>
+
+                            {tableData.map((row) => (
+                                <TableRow
+                                    key={row.name}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        {row.name}
+                                    </TableCell>
+                                    <TableCell align="right">{row.username}</TableCell>
+                                    <TableCell align="right">{row.emailaddr}</TableCell>
+                                    <TableCell align="right">{row.age}</TableCell>
+                                    <TableCell align="right">{row.county}</TableCell>
+                                    <TableCell align="right">
+                                        <Button onClick={() => {
+                                            handleClickOpen(row)
+                                        }} style={{
+                                            marginRight: 20
+                                        }}>EDIT</Button>
+                                        <Button onClick={() => {
+                                            // delete
+                                            axios.post("/app/deleteUser", {
+                                                id: row.id,
+        
+                                            }).then((res) => {
+                                                if (res.data.code === -1) {
+                                                    alert(res.data.msg)
+                                                } else {
+                                                    getTableData();
+                                                }
+                                            }).catch(() => {
+                                                alert("server is error")
+                                            })
+                                        }} color="error" style={{
+                                            marginRight: 20
+                                        }}>DELETE</Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                {!tableData.length && (
+                    <div className={sty.emptyBox}>
+                        no data
+                    </div>
+                )}
+            </div>
         </div>
     );
 

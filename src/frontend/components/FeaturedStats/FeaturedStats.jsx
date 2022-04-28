@@ -24,24 +24,6 @@ export default class FeaturedStats extends Component {
             console.log(err.message);
         })
     }
-    // const [data, setData] = useState(null);
-    // const [loading, setLoading] = useState(false);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         setLoading(true);
-    //         try {
-    //             const res = await fetch("/api/state")
-    //             const json = await res.json();
-    //             setData(json.positive);
-    //         }
-    //         catch (err) {
-    //             console.log(err.message);
-    //         }
-    //         setLoading(false);
-    //     }
-    //     fetchData();
-    // }, []);
 
     render() {
         const {data, finishedLoading} = this.state;

@@ -4,9 +4,11 @@ const { db, dbInit } = require("./database");
 const fs = require("fs");
 const { parse } = require("csv-parse");
 const path = require("path");
+const router = require("./expressRouter");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("../frontend"));
 
 // check if databases have been created
 dbInit();
@@ -75,53 +77,21 @@ if (executed === 0) {
     stateEntry();
 }
 
-
-
-// debug endpoint for interaction logs - TO DO: restrict to admins only
-app.get("/api/logs", (req, res) => {
-    try {
-        const stmt = db.prepare(`SELECT * FROM accesslog`).all();
-        res.status(200).json(stmt);
-    } catch (e) {
-        console.error(e);
-    }
-});
-
-// define check endpoint
-app.get("/app", (req, res) => {
-    //respond with status 200
-    res.statusCode = 200;
-
-    //respond with status message "OK"
-    res.statusMessage = "OK";
-    res.writeHead(res.statusCode, { "Content-Type": "text/plain" });
-    res.end(res.statusCode + " " + res.statusMessage);
-});
-
-// Endpoint for getting statewide data in JSON format
-app.get("/api/state/", (req, res) => {
-    try {
-        //selects only the 2 most updated case counts
-        const stmt = db.prepare(`SELECT Positive FROM state LIMIT 2`).all();
-        res.status(200).json(stmt);
-    } catch (e) {
-        console.error(e);
-    }
-});
-
-// Endpoint for getting county-wide data in JSON format
-app.get("/api/county/", (req, res) => {
-    try {
-        const stmt = db.prepare(`SELECT * FROM counties`).all();
-        res.status(200).json(stmt);
-    } catch (e) {
-        console.error(e);
-    }
-});
+// set up router for api endpoints (logs, state, county)
+app.use("/api", router);
 
 // default endpoint
-app.all("*", (req, res) => {
-    res.status(404).send("404 NOT FOUND");
+// app.all("*", (req, res) => {
+//     res.send("../frontend/index.html")
+// });
+
+// define check endpoint
+app.get("/app/*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend/index.html"), err => {
+        if (err) {
+            console.log(err);
+        }
+    });
 });
 
 // start up the server
