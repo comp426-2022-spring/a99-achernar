@@ -1,0 +1,12 @@
+.box{
+	padding: 30px;
+}
+.emptyBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    color: #666;
+    width: 100%;
+    background: #fff;
+}
