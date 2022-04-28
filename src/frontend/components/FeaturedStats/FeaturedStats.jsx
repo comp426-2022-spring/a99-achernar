@@ -1,6 +1,7 @@
 import "./FeaturedStats.css";
 import { ArrowDropUp, ArrowDropDown } from "@mui/icons-material";
 import { Component } from "react";
+import axios from "axios";
 
 export default class FeaturedStats extends Component {
     constructor() {
@@ -12,20 +13,35 @@ export default class FeaturedStats extends Component {
     }
 
     async componentDidMount() {
-        await fetch("/app/state", {
-            method: "GET",
-            headers: { "Content-Type": "application/json"}
-        })
-        .then(async res => {
-            const data = await res.json();
+        await axios.get("/api/state")
+        .then(res => {
+            const data = res.json();
             this.setState({data: data, finishedLoading: true}, () => {
                 console.log(this.state.data);
             });
         })
-        .catch(function(err) {
+        .catch(err => {
             console.log(err.message);
         })
     }
+    // const [data, setData] = useState(null);
+    // const [loading, setLoading] = useState(false);
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         setLoading(true);
+    //         try {
+    //             const res = await fetch("/api/state")
+    //             const json = await res.json();
+    //             setData(json.positive);
+    //         }
+    //         catch (err) {
+    //             console.log(err.message);
+    //         }
+    //         setLoading(false);
+    //     }
+    //     fetchData();
+    // }, []);
 
     render() {
         const {data, finishedLoading} = this.state;

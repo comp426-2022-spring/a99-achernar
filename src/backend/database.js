@@ -18,7 +18,7 @@ function dbInit() {
     let logRow = logStmt.get();
     let countyRow = countyStmt.get();
     let stateRow = stateStmt.get();
-    
+
     if (accountRow === undefined) {
         const accountInit = `
             CREATE TABLE accounts (
@@ -38,19 +38,19 @@ function dbInit() {
     } else {
         console.log("Account database already exists.");
     }
-    
+
     if (logRow === undefined) {
         const logInit = `
             CREATE TABLE accesslog (
                 id INTEGER PRIMARY KEY,
                 remoteaddr TEXT,
                 remoteuser TEXT,
-                time NUMBER,
+                time INTEGER,
                 method TEXT,
                 url TEXT,
                 protocol TEXT,
-                httpversion NUMBER,
-                status NUMBER,
+                httpversion INTEGER,
+                status INTEGER,
                 referer TEXT,
                 useragent TEXT
             );    
@@ -60,16 +60,16 @@ function dbInit() {
     } else {
         console.log("Interaction database already exists.");
     }
-    
+
     if (countyRow === undefined) {
         const countyInit = `
             CREATE TABLE counties (
                 id INTEGER PRIMARY KEY,
-                rownumber NUMBER,
+                rownumber INTEGER,
                 date TEXT,
                 county TEXT,
-                dailycases NUMBER,
-                deaths NUMBER
+                dailycases INTEGER,
+                deaths INTEGER
             );    
         `;
         db.exec(countyInit);
@@ -83,15 +83,28 @@ function dbInit() {
             CREATE TABLE state (
                 id INTEGER PRIMARY KEY,
                 date TEXT,
-                positive NUMBER,
-                deaths NUMBER
+                positive INTEGER,
+                deaths INTEGER
             );      
         `;
         db.exec(stateInit);
         console.log("State database has been created.");
     } else {
-        console.log("State database already exists.")
+        console.log("State database already exists.");
     }
 }
 
-module.exports = {db, dbInit};
+function dropState() {
+    db.exec(`DROP TABLE IF EXISTS state`);
+    const stateInit = `
+            CREATE TABLE state (
+                id INTEGER PRIMARY KEY,
+                date TEXT,
+                positive INTEGER,
+                deaths INTEGER
+            );      
+        `;
+    db.exec(stateInit);
+}
+
+module.exports = { db, dbInit, dropState };
