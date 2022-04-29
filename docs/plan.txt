@@ -1,1 +1,30 @@
-https://docs.google.com/document/d/12Z7nokw7xZDpQ4PT4wi9AwUXrpIQN4v4OSuivWTiiE0/edit?usp=sharing
+Initial Planning:
+
+General idea: COVID Dashboard that looks something like this: https://covid19.ncdhhs.gov/dashboard
+
+Required components:
+
+Data infrastructure (how do we gather and store the information about covid?)
+API (used for sending the covid information to the front end)
+Logs (used for tracking interactions with both the front and back end)
+Front end website (obviously used for interaction with the end user)
+
+Tentative Schedule:
+- Set up data collection storage (4/1)
+- Set up SQL database(s) (4/6)
+- Set up server/endpoints (4/8)
+- Set up front end (4/18)
+
+Possible features:
+- Cases and death counts for NC
+- Cases and death counts by county
+- Graph of cases?
+- Map of cases?
+- User system
+
+General roles of members:
+- Brendan: Front end/database lead
+- Hugo: Back end lead
+- Kevin: Authentication lead
+- Isaac: Communication lead
+- William: Data lead
