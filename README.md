@@ -1,10 +1,11 @@
-# Team Archernar Covid Dashboard
+# Team Achernar Covid-19 Dashboard
 
+## Introduction
 This covid dashboard displays covid information for the state of North Carolina, both at a state and county level. It displays data about a number of areas, including cases, deaths, hospitalizations, etc.
 
 ## Installation
 
-In order to install the appropriate packages with npm, run the command  "npm i"  in the root directory.
+In order to install the appropriate packages with npm, run the command "npm i" in the root directory.
 
 ## Dependancy List
 
@@ -40,3 +41,12 @@ In order to install the appropriate packages with npm, run the command  "npm i" 
 To run both the front-end webpage and back-end api, run "npm run build" \
 To run only the front-end, run "npm client" \
 To run only the back-end, run "npm start"
+
+## API Endpoints Documentation
+Full API Documentation can be found under `doc` directory.
+
+## Team Information
+This Covid Dashboard is implemented by Team Achernar from COMP 426, Spring 2022. Team details can be found under `doc` directory.
+
+## Data Source
+The data used to implement this dashboard is from North Carolina Department of Health and Human Services(NCDHHS), Link to data: https://covid19.ncdhhs.gov/dashboard/data-behind-dashboards
