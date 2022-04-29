@@ -14,6 +14,7 @@ Tentative Schedule:
 - Set up SQL database(s) (4/6)
 - Set up server/endpoints (4/8)
 - Set up front end (4/18)
+- Set up user authentication (4/25)
 
 Possible features:
 - Cases and death counts for NC
@@ -28,3 +29,22 @@ General roles of members:
 - Kevin: Authentication lead
 - Isaac: Communication lead
 - William: Data lead
+
+UPDATE 1 (4/1)
+We have decided to plan and develop the front end first. This will make it easier to drive our back end development and data collection.
+Brendan has begun work on building the basic HTML for the webpage. This will likely be done in the next couple days.
+This means we will effectively flip the target completion dates for the front end and back end components
+
+UPDATE 2 (4/7)
+Front end design is more or less done.
+Brendan and Hugo have begun to work on the back end. Brendan is working on the databases for the covid data, Hugo is working on the API endpoints.
+William has found the data source for our data (NCDHHS) and will soon be done setting up what is necessary to gather the data
+
+UPDATE 3 (4/18)
+Front end and back end are mostly complete. It is now time to begin linking the two together
+Kevin is almost done with the code for authentication, but has not yet integrated it yet with the existing code
+
+UPDATE 4 (4/25)
+All of the code more or less works, it is time to prepare the project for submission (i.e., meeting all of the requirements)
+Isaac has begun work on beefing up the documentation
+When the code is finalized, all members will record a demo video to submit in the final submission
