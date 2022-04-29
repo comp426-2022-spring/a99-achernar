@@ -13,11 +13,19 @@ function dbInit() {
     const stateStmt = db.prepare(
         `SELECT name FROM sqlite_master WHERE type='table' AND name='state';`
     );
+    const hospitalStmt = db.prepare(
+        `SELECT name FROM sqlite_master WHERE type='table' AND name='hospital';`
+    )
+    const waterStmt = db.prepare(
+        `SELECT name FROM sqlite_master WHERE type='table' AND name='wastewater';`
+    )
 
     let accountRow = accountStmt.get();
     let logRow = logStmt.get();
     let countyRow = countyStmt.get();
     let stateRow = stateStmt.get();
+    let hospitalRow = hospitalStmt.get();
+    let waterRow = waterStmt.get();
 
     if (accountRow === undefined) {
         const accountInit = `
@@ -92,19 +100,39 @@ function dbInit() {
     } else {
         console.log("State database already exists.");
     }
-}
 
-function dropState() {
-    db.exec(`DROP TABLE IF EXISTS state`);
-    const stateInit = `
-            CREATE TABLE state (
+    if (hospitalRow === undefined) {
+        const hospitalInit = `
+            CREATE TABLE hospital (
                 id INTEGER PRIMARY KEY,
                 date TEXT,
-                positive INTEGER,
-                deaths INTEGER
+                hospitalizations INTEGER
             );      
         `;
-    db.exec(stateInit);
+        db.exec(hospitalInit);
+        console.log("Hospital database has been created.");
+    } else {
+        console.log("Hospital database already exists.");
+    }
+
+    if (waterRow === undefined) {
+        const waterInit = `
+            CREATE TABLE wastewater (
+                id INTEGER PRIMARY KEY,
+                plant TEXT,
+                county TEXT,
+                date TEXT,
+                population INTEGER,
+                particles INTEGER
+            );      
+        `;
+        db.exec(waterInit);
+        console.log("Wastewater database has been created.");
+    } else {
+        console.log("Wastewater database already exists.");
+    }
 }
 
-module.exports = { db, dbInit, dropState };
+
+
+module.exports = { db, dbInit };

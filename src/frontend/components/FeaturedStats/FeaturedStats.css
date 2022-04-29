@@ -6,58 +6,67 @@
 
 .featuredItem {
     flex: 1;
-    margin: 10px 20px;
-    padding: 30px;
+    /* margin: 10px 20px; */
+    margin: 1% 2%;
+    padding: 1.5%;
     border-radius: 10px;
     -webkit-box-shadow: -5px 5px 8px 5px #D0D1CA; 
     box-shadow: -5px 5px 8px 5px #D0D1CA; /*#6cbceb*/
 }
 
 .featuredTitle {
-    font-size: 20px;
+    font-size: 150%;
 }
 
 .featuredBoxContainer {
-    margin: 10px 0px;
+    margin: 4% 0%;
     display: flex;
     align-items: center;
 }
 
 .featuredNum {
-    font-size: 40px;
+    font-size: 240%;
     font-weight: bold;
 }
 
 .featuredRate {
     display: flex;
     align-items: center;
-    margin-left: 30px;
-    font-size: 20px;
+    margin-left: 7%;
+    font-size: 120%;
 }
 
 .featuredPrevious {
-    margin-left: 140px;
-    font-size: 25px;
+    margin-left: 35%;
+    font-size: 150%;
     color: #696969;
 }
 
 .featuredSubPrev {
-    margin-left: 200px;
+    margin-left: 25%;
     color: #696969;
 }
 
 .featuredSubtitle {
+    white-space: nowrap;
     color: #696969;
+}
+
+.featuredNumMillion {
+    font-size: 240%;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 .featuredPreviousMillion {
-    margin-left: 40px;
-    font-size: 20px;
+    margin-left: 10%;
+    font-size: 150%;
     color: #696969;
+    white-space: nowrap;
 }
 
-.featuredPreviousVisits {
-    margin-left: 185px;
-    font-size: 25px;
+.featuredSubPrevMillion {
+    margin-left: 42%;
     color: #696969;
+    white-space: nowrap;
 }

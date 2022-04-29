@@ -75,15 +75,47 @@ if (executed === 0) {
             });
     }
     stateEntry();
+
+    function hospitalEntry() {
+        const coolPath = path.join(__dirname, "./data/hospital.csv");
+        fs.createReadStream(coolPath)
+            .pipe(parse({ delimiter: ",", from_line: 2 }))
+            .on("data", function (row) {
+                let hospitaldata = {
+                    date: row[0],
+                    hospitalizations: row[1]
+                };
+                const stmt = db.prepare(
+                    `INSERT INTO hospital (date, hospitalizations) VALUES (?, ?)`
+                );
+                stmt.run(Object.values(hospitaldata));
+            });
+    }
+    hospitalEntry();
+
+    function waterEntry() {
+        const coolPath = path.join(__dirname, "./data/wastewater.csv");
+        fs.createReadStream(coolPath)
+            .pipe(parse({ delimiter: ",", from_line: 2 }))
+            .on("data", function (row) {
+                let waterdata = {
+                    plant: row[0],
+                    county: row[1],
+                    date: row[2],
+                    population: row[3],
+                    particles: row[4]
+                };
+                const stmt = db.prepare(
+                    `INSERT INTO wastewater (plant, county, date, population, particles) VALUES (?, ?, ?, ?, ?)`
+                );
+                stmt.run(Object.values(waterdata));
+            });
+    }
+    waterEntry();
 }
 
 // set up router for api endpoints (logs, state, county)
 app.use("/api", router);
-
-// default endpoint
-// app.all("*", (req, res) => {
-//     res.send("../frontend/index.html")
-// });
 
 // define check endpoint
 app.get("/app/*", (req, res) => {
