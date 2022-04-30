@@ -1,26 +1,30 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import Topbar from "./components/topBar/Topbar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Login from "./pages/Login";
-import React from "react";
-import User from './pages/Users';
+import User from "./pages/Users";
+import Vaccine from "./pages/Vaccine";
+import Outbreaks from "./pages/Outbreaks";
 
 function App() {
-    return (
-      <div>
-          <Topbar />
-          <div className="container">
-              <Sidebar />
-              <Routes>
-                  <Route exact path="/app" element={<Home />} />
-                  <Route path="login" element={<Login />} />
-                  <Route path="/user" element={<User />} />
-              </Routes>
-          </div>
+  return (
+    <div>
+      <Topbar />
+      <div className="container">
+        <Sidebar />
+        <Routes>
+          <Route exact path="/app" element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/vaccine" element={<Vaccine />} />
+          <Route path="/outbreaks" element={<Outbreaks />} />
+        </Routes>
       </div>
-    );
+    </div>
+  );
 }
 
 export default App;

@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import { Home, Equalizer, Newspaper, List, ChatBubble, Notifications, Coronavirus, Healing, Person } from '@mui/icons-material';
+import { Home, Equalizer, Newspaper, List, /*ChatBubble,*/ Map, Coronavirus, Healing, Person } from '@mui/icons-material';
 import {
     useNavigate,
 } from "react-router-dom";
@@ -19,11 +19,15 @@ export default function Sidebar() {
                             <Home className="SidebarIcon" />
                             Overview
                         </li>
-                        <li className="SidebarListItem">
+                        <li onClick={() => {
+                            navigate("/vaccine")
+                        }} className="SidebarListItem">
                             <Equalizer className="SidebarIcon" />
                             Vaccine Statistics
                         </li>
-                        <li className="SidebarListItem">
+                        <li onClick={() => {
+                            navigate("/outbreaks")
+                        }} className="SidebarListItem">
                             <Coronavirus className="SidebarIcon" />
                             Outbreaks
                         </li>
@@ -61,7 +65,7 @@ export default function Sidebar() {
                 </div>
 
                 <div className="SidebarMenu">
-                    <h3 className="SidebarTitle">Notifications</h3>
+                    <h3 className="SidebarTitle">Account Information</h3>
                     <ul className="SidebarList">
                         <li className="SidebarListItem">
                             <Home className="SidebarIcon" />
@@ -71,14 +75,14 @@ export default function Sidebar() {
                         <Map className="SidebarIcon"/>
                         My Testing Sites
                     </li>*/}
-                        <li className="SidebarListItem">
+                        {/* <li className="SidebarListItem">
                             <ChatBubble className="SidebarIcon" />
                             <span className="sidebarIconBadge">2</span>
                             Messages
-                        </li>
+                        </li> */}
                         <li className="SidebarListItem">
-                            <Notifications className="SidebarIcon" />
-                            Notifications
+                            <Map className="SidebarIcon" />
+                            My County
                         </li>
                     </ul>
                 </div>

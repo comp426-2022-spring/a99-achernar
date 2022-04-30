@@ -47,7 +47,7 @@ export default function Users() {
                 setTableData(res.data.data)
             }
         }).catch(() => {
-            alert("server is error")
+            alert("An error has occurred.")
         })
     }
 
@@ -138,7 +138,7 @@ export default function Users() {
                                     setOpen(false);
                                 }
                             }).catch(() => {
-                                alert("server is error")
+                                alert("An error has occurred.")
                             })
 
                         }}>Enter</Button>
@@ -190,7 +190,7 @@ export default function Users() {
                                                     getTableData();
                                                 }
                                             }).catch(() => {
-                                                alert("server is error")
+                                                alert("An error has occurred.")
                                             })
                                         }} color="error" style={{
                                             marginRight: 20
