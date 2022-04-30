@@ -1,36 +1,36 @@
 .Sidebar {
     flex: 1;
-    height: auto; /* to prevent overflow */
-    background-color: #f0f0f0;
+    height: auto;
+    background-color: #e3e3e3; /*#f0f0f0*/
     position: sticky;
 }
 
 .SidebarWrapper {
-    padding: 20px;
+    padding: 6%;
     color: #696969;
 }
 
 .SidebarMenu {
-    margin-bottom: 45%;
+    margin-bottom: 20%;
 }
 
 .SidebarTitle {
-    font-size: 25px;
-    color: #a9a9a9;
+    font-size: 170%;
+    color: #9b9b9b; /*#a9a9a9*/
 }
 
 .SidebarList {
     list-style: none;
-    padding: 5px;
+    padding: 1.5%;
 }
 
 .SidebarListItem {
-    padding: 15px;
+    padding: 5%;
     cursor: pointer;
     display: flex;
     align-items: center;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 125%;
 }
 
 .SidebarListItem:hover{
@@ -42,18 +42,19 @@
     font-size: 25px !important;
 }
 
-/*make new sections to put bubble on messages*/
-.topbarIconBadge{
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    top: -5px;
-    right: -5px;
+/* make new sections to put bubble on messages */
+
+.sidebarIconBadge{
+    width: 5%;
+    height: 10%;
+    position: relative;
+    top: -10px;
+    right: 12px;
     background-color: red;
     color: white;
     border-radius: 50%;
     display: flex;
     justify-content: center;
-    align-items: center;
     font-size: 10px;
+    align-items: center;
 }

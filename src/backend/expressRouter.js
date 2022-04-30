@@ -6,7 +6,7 @@ const { db } = require("./database")
 router.get('/state', (req, res) => {
     try {
         //selects only the 2 most updated case counts
-        const stmt = db.prepare(`SELECT * FROM state LIMIT 2`).all();
+        const stmt = db.prepare(`SELECT * FROM state`).all();
         res.status(200).json(stmt);
     } catch (e) {
         console.error(e);
@@ -42,7 +42,7 @@ router.get('/getUserList', (req, res) => {
 router.get('/hospital', (req, res) => {
     try {
         //selects only the 2 most updated case counts
-        const stmt = db.prepare(`SELECT * FROM hospital LIMIT 2`).all();
+        const stmt = db.prepare(`SELECT * FROM hospital`).all();
         res.status(200).json(stmt);
     } catch (e) {
         console.error(e);
@@ -54,6 +54,17 @@ router.get('/wastewater', (req, res) => {
     try {
         //selects only the 2 most updated case counts
         const stmt = db.prepare(`SELECT * FROM wastewater GROUP BY Plant`).all();
+        res.status(200).json(stmt);
+    } catch (e) {
+        console.error(e);
+    }
+})
+
+// define the wastewater json route that displays total number of particles across all counties
+router.get('/wastewater-total', (req, res) => {
+    try {
+        //selects only the 2 most updated case counts
+        const stmt = db.prepare(`SELECT id, plant, date, SUM(Particles) AS particles, ROUND(AVG(particles)) AS average FROM wastewater GROUP BY date`).all();
         res.status(200).json(stmt);
     } catch (e) {
         console.error(e);

@@ -1,0 +1,40 @@
+.caseChart {
+    width: 92%;
+    margin: 2% 2% 0% 2%;
+    padding: 2%;
+    -webkit-box-shadow: -5px 5px 8px 5px #D0D1CA; 
+    box-shadow: -5px 5px 8px 5px #D0D1CA; /*#6cbceb*/
+}
+
+.hospitalChart {
+    width: 45%;
+    margin: 2%;
+    padding: 2%;
+    -webkit-box-shadow: -5px 5px 8px 5px #D0D1CA; 
+    box-shadow: -5px 5px 8px 5px #D0D1CA;
+}
+
+.wasteChart {
+    width: 45%;
+    margin: 2%;
+    padding: 2%;
+    -webkit-box-shadow: -5px 5px 8px 5px #D0D1CA; 
+    box-shadow: -5px 5px 8px 5px #D0D1CA;
+}
+
+.caseTitle {
+    margin-bottom: 2%;
+}
+
+.hospitalTitle {
+    margin-bottom: 2%;
+}
+
+.wasteTitle {
+    margin-bottom: 2%;
+}
+
+.sideCharts {
+    display: flex;
+    justify-content: space-between;
+}

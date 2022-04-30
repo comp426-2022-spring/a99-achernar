@@ -44,7 +44,7 @@ export default function Login(props) {
                     navigate("/")
                 }
             }).catch(() => {
-                alert("server is error")
+                alert("An error has occurred.")
             })
 
         } else {
@@ -61,7 +61,7 @@ export default function Login(props) {
                     setIsLogin(true)
                 }
             }).catch(() => {
-                alert("server is error")
+                alert("An error has occurred.")
             })
         }
     }

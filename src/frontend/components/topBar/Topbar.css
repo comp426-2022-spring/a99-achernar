@@ -36,21 +36,6 @@
     color: WHITE;
 }
 
-.topbarIconBadge{       
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 10px;
-}
-
 .topPFP{
     width: 45px;
     height: 45px;

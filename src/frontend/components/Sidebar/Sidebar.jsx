@@ -73,7 +73,7 @@ export default function Sidebar() {
                     </li>*/}
                         <li className="SidebarListItem">
                             <ChatBubble className="SidebarIcon" />
-                            <span className="topbarIconBadge">2</span>
+                            <span className="sidebarIconBadge">2</span>
                             Messages
                         </li>
                         <li className="SidebarListItem">
