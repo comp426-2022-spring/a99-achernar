@@ -174,3 +174,146 @@ const port = 5555;
 app.listen(port, () => {
     console.log(`App is running on port 5555`);
 });
+
+
+
+// login
+app.post("/app/login", (req, res) => {
+    let {
+        username,
+        password
+    } = req.body;
+    try {
+        const row = db.prepare('SELECT * FROM accounts WHERE username=? AND password=?').get(username, password);
+        if (!row) {
+            res.status(200).json({
+                code: -1,
+                msg: 'wrong account or password'
+            });
+            return;
+        }
+        res.status(200).json({
+            code: 200,
+            data: row,
+            msg: 'Success!'
+        });
+    } catch (e) {
+        res.status(500).json({
+            code: -1,
+            msg: 'server wrong'
+        });
+        console.error(e);
+    }
+});
+
+// signup
+app.post("/app/register", (req, res) => {
+    let {
+        username,
+        password,
+        name,
+        emailaddr,
+        age,
+        county
+    } = req.body;
+    try {
+        const row = db.prepare('SELECT * FROM accounts WHERE username=?').get(username);
+        if (row) {
+            res.status(200).json({
+                code: -1,
+                msg: 'username already exists'
+            });
+            return;
+        }
+        const stmt = db.prepare(
+            `INSERT INTO accounts (username, password, name, emailaddr, age, county) VALUES (?, ?, ?, ?, ?, ?)`
+        );
+        stmt.run(username,
+            password,
+            name,
+            emailaddr,
+            age,
+            county);
+        res.status(200).json({
+            code: 200,
+            msg: 'Success!'
+        });
+    } catch (e) {
+        res.status(500).json({
+            code: -1,
+            msg: 'server wrong'
+        });
+        console.error(e);
+    }
+});
+
+// get users
+app.get("/app/getUserList", (req, res) => {
+    try {
+        const rows = db.prepare('SELECT * FROM accounts').all();
+        res.status(200).json({
+            code: 200,
+            data: rows,
+            msg: 'Success!'
+        });
+    } catch (e) {
+        res.status(500).json({
+            code: -1,
+            msg: 'server wrong'
+        });
+        console.error(e);
+    }
+});
+
+// update
+app.post("/app/updateUser", (req, res) => {
+    let {
+        id,
+        name,
+        emailaddr,
+        age,
+        county
+    } = req.body;
+    try {
+        const stmt = db.prepare(
+            `UPDATE accounts SET name=?, emailaddr=?, age=?, county=? WHERE id=?`
+        );
+        stmt.run(name,
+            emailaddr,
+            age,
+            county, id);
+        res.status(200).json({
+            code: 200,
+            msg: 'Success!'
+        });
+    } catch (e) {
+        res.status(500).json({
+            code: -1,
+            msg: 'server wrong'
+        });
+        console.error(e);
+    }
+});
+
+// delete
+app.post("/app/deleteUser", (req, res) => {
+    let {
+        id
+    } = req.body;
+    try {
+        const stmt = db.prepare(
+            `DELETE FROM accounts WHERE id=?`
+        );
+        stmt.run(id);
+        res.status(200).json({
+            code: 200,
+            msg: 'Success!'
+        });
+    } catch (e) {
+        res.status(500).json({
+            code: -1,
+            msg: 'server wrong'
+        });
+        console.error(e);
+    }
+});
