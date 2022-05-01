@@ -3,11 +3,25 @@
 ## Introduction
 This covid dashboard displays covid information for the state of North Carolina, both at a state and county level. It displays data about a number of areas, including cases, deaths, hospitalizations, etc.
 
-## Installation
+## Installation and Run Instructions
 
 In order to install the appropriate packages with npm, run the command "npm i" in the root directory.
+To run both the front-end webpage and back-end api together as a complete webapp, run `npm run build`
 
-## Dependancy List
+# Dev Instructions
+To run only the front-end, run `npm client`
+To run only the back-end, run `npm start`
+
+## API Endpoints Documentation
+Full API Documentation can be found under `/docs` directory. 
+
+## Team Information
+This Covid Dashboard is implemented by Team Achernar from COMP 426, Spring 2022. Team details can be found under `/docs` directory.
+
+## Data Source
+The data used to implement this dashboard is from North Carolina Department of Health and Human Services(NCDHHS), Link to data: https://covid19.ncdhhs.gov/dashboard/data-behind-dashboards
+
+## Dependency List
 
 - @emotion/react version 11.8.2
 - @emotion/styled version 11.8.1
@@ -35,18 +49,3 @@ In order to install the appropriate packages with npm, run the command "npm i" i
 - recharts version 2.1.9
 - typescript version 4.6.3
 - web-vitals version 2.1.4
-
-## Run Instructions
-
-To run both the front-end webpage and back-end api, run "npm run build" \
-To run only the front-end, run "npm client" \
-To run only the back-end, run "npm start"
-
-## API Endpoints Documentation
-Full API Documentation can be found under `doc` directory.
-
-## Team Information
-This Covid Dashboard is implemented by Team Achernar from COMP 426, Spring 2022. Team details can be found under `doc` directory.
-
-## Data Source
-The data used to implement this dashboard is from North Carolina Department of Health and Human Services(NCDHHS), Link to data: https://covid19.ncdhhs.gov/dashboard/data-behind-dashboards
