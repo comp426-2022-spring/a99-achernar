@@ -70,3 +70,14 @@
     color: #696969;
     white-space: nowrap;
 }
+
+.featuredSubPrev2 {
+    margin-left: 39%;
+    color: #696969;
+}
+
+.featuredPreviousDesc {
+    margin-left: 25%;
+    font-size: 150%;
+    color: #696969;
+}

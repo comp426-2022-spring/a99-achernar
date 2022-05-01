@@ -38,3 +38,16 @@
     display: flex;
     justify-content: space-between;
 }
+
+.vaccineChart {
+    width: 92%;
+    margin: 2% 2% 0% 2%;
+    padding: 2%;
+    -webkit-box-shadow: -5px 5px 8px 5px #D0D1CA; 
+    box-shadow: -5px 5px 8px 5px #D0D1CA; /*#6cbceb*/
+}
+
+.gridStyle {
+    width: 100%;
+    aspect-ratio: 2.6/1;
+}

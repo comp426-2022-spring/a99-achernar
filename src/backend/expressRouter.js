@@ -71,4 +71,15 @@ router.get('/wastewater-total', (req, res) => {
     }
 })
 
+// define the vaccine json route
+router.get('/vaccine', (req, res) => {
+    try {
+        //selects only the 2 most updated case counts
+        const stmt = db.prepare(`SELECT id, county, twodoses, booster, population, totalpopulation, totaltwo, totalboost FROM vaccine`).all();
+        res.status(200).json(stmt);
+    } catch (e) {
+        console.error(e);
+    }
+})
+
 module.exports = router;

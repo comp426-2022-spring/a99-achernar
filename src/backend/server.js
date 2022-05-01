@@ -112,6 +112,29 @@ if (executed === 0) {
             });
     }
     waterEntry();
+
+    function vaccineEntry() {
+        const coolPath = path.join(__dirname, "./data/vaccine.csv");
+        fs.createReadStream(coolPath)
+            .pipe(parse({ delimiter: ",", from_line: 2 }))
+            .on("data", function (row) {
+                let vaccinedata = {
+                    county: row[0],
+                    onedose: row[1],
+                    twodoses: row[2],
+                    booster: row[3],
+                    population: row[4],
+                    totalpopulation: row[5],
+                    totaltwo: row[6],
+                    totalboost: row[7]
+                };
+                const stmt = db.prepare(
+                    `INSERT INTO vaccine (county, onedose, twodoses, booster, population, totalpopulation, totaltwo, totalboost) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+                );
+                stmt.run(Object.values(vaccinedata));
+            });
+    }
+    vaccineEntry();
 }
 
 // set up router for api endpoints (logs, state, county)
