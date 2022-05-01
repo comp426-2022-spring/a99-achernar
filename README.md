@@ -5,12 +5,12 @@ This covid dashboard displays covid information for the state of North Carolina,
 
 ## Installation and Run Instructions
 
-In order to install the appropriate packages with npm, run the command "npm i" in the root directory.
-To run both the front-end webpage and back-end api together as a complete webapp, run `npm run build`
+In order to install the appropriate packages with npm, run the command `npm i` in the root directory.
+To run both the front-end webpage and back-end api together as a complete webapp, run `npm run build`.
 
 ### Dev Instructions
-To run only the front-end, run `npm client`\
-To run only the back-end, run `npm start`
+To run only the front-end, run `npm client`.\
+To run only the back-end, run `npm start`.
 
 ## API Endpoints Documentation
 Full API Documentation can be found under `/docs` directory. 
