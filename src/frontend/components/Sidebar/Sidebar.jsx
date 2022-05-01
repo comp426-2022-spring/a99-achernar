@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import { Home, Equalizer, Newspaper, List, /*ChatBubble,*/ Map, Coronavirus, Healing, Person } from '@mui/icons-material';
+import { Home, Equalizer, Newspaper, List, /*ChatBubble,*/ Map, Coronavirus, Healing, Person, Login } from '@mui/icons-material';
 import {
     useNavigate,
 } from "react-router-dom";
@@ -36,6 +36,12 @@ export default function Sidebar() {
                         }} className="SidebarListItem">
                             <Person className="SidebarIcon" />
                             Users
+                        </li>
+                        <li onClick={() => {
+                             navigate("/login")
+                        }} className="SidebarListItem">
+                            <Login className="SidebarIcon" />
+                            Login
                         </li>
                     </ul>
                 </div>

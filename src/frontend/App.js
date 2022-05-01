@@ -17,7 +17,7 @@ function App() {
         <Sidebar />
         <Routes>
           <Route exact path="/app" element={<Home />} />
-          <Route path="login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/user" element={<User />} />
           <Route path="/vaccine" element={<Vaccine />} />
           <Route path="/outbreaks" element={<Outbreaks />} />
