@@ -94,24 +94,25 @@ export default function Sidebar() {
               <Home className="SidebarIcon" />
               My Account
             </li>
-            {/*<li className="SidebarListItem">
-                        <Map className="SidebarIcon"/>
-                        My Testing Sites
-                    </li>*/}
-            {/* <li className="SidebarListItem">
-                            <ChatBubble className="SidebarIcon" />
-                            <span className="sidebarIconBadge">2</span>
-                            Messages
-                        </li> */}
-                        <li onClick={() => {
-                             navigate("/county")
-                        }} className="SidebarListItem">
-                            <Map className="SidebarIcon" />
-                            My County
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <li
+              onClick={() => {
+                navigate("/county");
+              }}
+              className="SidebarListItem"
+            >
+              <Map className="SidebarIcon" />
+              My County
+            </li>
+            <li
+              onClick={() => {
+                navigate("/user");
+              }}
+              className="SidebarListItem"
+            >
+              <Person className="SidebarIcon" />
+              Users
+            </li>
+          </ul>
         </div>
       </div>
     </div>
