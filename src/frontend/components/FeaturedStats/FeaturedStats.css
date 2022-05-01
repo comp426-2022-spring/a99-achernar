@@ -44,11 +44,13 @@
 }
 
 .featuredSubPrev {
+    font-size: 0.86vw;
     margin-left: 25%;
     color: #696969;
 }
 
 .featuredSubtitle {
+    font-size: 0.86vw;
     white-space: nowrap;
     color: #696969;
 }
@@ -74,7 +76,7 @@
 
 .featuredSubPrev2 {
     margin-left: 39%;
-    font-size: 0.8vw;
+    font-size: 0.83vw;
     color: #696969;
 }
 
