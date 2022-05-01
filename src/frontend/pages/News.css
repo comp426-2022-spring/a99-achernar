@@ -1,0 +1,43 @@
+.container {
+    flex: 4;
+    background-color: #f8f8f8;
+}
+
+.item {
+    flex: 1;
+    margin: 1% 2% 0% 0%;
+    padding: 1.3%;
+    border-radius: 10px;
+    -webkit-box-shadow: -5px 5px 8px 5px #D0D1CA; 
+    box-shadow: -5px 5px 8px 5px #D0D1CA; /*#6cbceb*/
+    list-style-type: none;
+    margin-bottom: 1%;
+}
+
+.title {
+    font-size: 1.0vw;
+}
+
+.description {
+    color: #696969;
+}
+
+.meta {
+    color: #696969;
+    font-weight: bold;
+}
+
+.provider {
+    margin-left: 3%;
+}
+
+.thumbnail {
+    float: right;
+    border-radius: 12px;
+    margin-left: 45%;
+    margin-bottom: 4%;
+}
+
+.provider-thumbnail {
+    margin-right: 0.5%;
+}

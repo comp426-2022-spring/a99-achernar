@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import User from "./pages/Users";
 import Vaccine from "./pages/Vaccine";
 import Outbreaks from "./pages/Outbreaks";
+import News from "./pages/News"
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/vaccine" element={<Vaccine />} />
           <Route path="/outbreaks" element={<Outbreaks />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/faq" element={<Outbreaks />} />
+          <Route path="/symptoms" element={<Outbreaks />} />
           <Route path="/app" element={<Navigate replace to="/app" />} />
           <Route path="*" element={<Navigate replace to="/app" />} />
         </Routes>
