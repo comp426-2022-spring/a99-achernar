@@ -34,6 +34,7 @@
     align-items: center;
     margin-left: 7%;
     font-size: 120%;
+    color: #34046c;
 }
 
 .featuredPrevious {
@@ -79,5 +80,11 @@
 .featuredPreviousDesc {
     margin-left: 25%;
     font-size: 150%;
-    color: #696969;
+    color: #34046c;
+}
+
+.featuredPreviousVax {
+    margin-left: 35%;
+    font-size: 150%;
+    color: #34046c;
 }

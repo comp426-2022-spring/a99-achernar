@@ -4,7 +4,7 @@ import "./Chart.css";
 import axios from "axios";
 
 
-export default class VaccineTable extends PureComponent {
+export default class OutbreakTable extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,7 +15,7 @@ export default class VaccineTable extends PureComponent {
     
     async componentDidMount() {
         await axios
-          .get("/api/vaccine")
+          .get("/api/outbreaks")
           .then((res) => {
             const data = res.data;
             this.setState({ data: data, finishedLoading: true }, () => {
@@ -37,16 +37,16 @@ export default class VaccineTable extends PureComponent {
             );
         }
         const columns = [
-            { field: 'county', headerName: 'County', width: '300' },
-            { field: 'twodoses', headerName: 'Two Doses or One J&J', width: '400' },
-            { field: 'booster', headerName: 'Booster Shots', width: '300'},
-            { field: 'population', headerName: 'Population', width: '300' }
+            { field: 'county', headerName: 'County', width: '250' },
+            { field: 'nursinghome', headerName: 'Nursing Home', width: '250' },
+            { field: 'carefacility', headerName: 'Residential Care Facility', width: '300'},
+            { field: 'correctionalfacility', headerName: 'Correctional Facility', width: '300' },
+            { field: 'other', headerName: 'Other', width: '200' }
         ]
         return (
             <div className="chartContainer">
                 <div className="vaccineChart">
-                    <h2 className="caseTitle">Vaccination Records by County</h2>
-                    <div className="gridStyle"><DataGrid rows={data} columns={columns} pageSize={8} disableSelectionOnClick/></div> 
+                    <div className="vaccineGridStyle"><DataGrid density='compact' rows={data} columns={columns} pageSize={5} disableSelectionOnClick/></div> 
                 </div>
             </div>
         );

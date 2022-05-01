@@ -94,7 +94,7 @@ export default class DeathChart extends PureComponent {
             tickCount="7"
           />
           <Tooltip formatter={DataFormatter} />
-          <Line name="Hospitalizations" dataKey="hospitalizations" stroke="#E05B5B" />
+          <Line name="Hospitalizations" dataKey="hospitalizations" stroke="#34046c" />
         </LineChart>
       </ResponsiveContainer>
     );

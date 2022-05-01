@@ -22,6 +22,9 @@ function dbInit() {
     const vaccineStmt = db.prepare(
         `SELECT name FROM sqlite_master WHERE type='table' AND name='vaccine';`
     )
+    const outbreakStmt = db.prepare(
+        `SELECT name FROM sqlite_master WHERE type='table' AND name='outbreaks';`
+    )
     
     let accountRow = accountStmt.get();
     let logRow = logStmt.get();
@@ -30,7 +33,7 @@ function dbInit() {
     let hospitalRow = hospitalStmt.get();
     let waterRow = waterStmt.get();
     let vaccineRow = vaccineStmt.get();
-
+    let outbreakRow = outbreakStmt.get();
 
     if (accountRow === undefined) {
         const accountInit = `
@@ -155,6 +158,23 @@ function dbInit() {
         console.log("Vaccine database has been created.");
     } else {
         console.log("Vaccine database already exists.");
+    }
+
+    if (outbreakRow === undefined) {
+        const outbreakInit = `
+            CREATE TABLE outbreaks (
+                id INTEGER PRIMARY KEY,
+                county TEXT,
+                nursinghome INTEGER,
+                carefacility INTEGER,
+                correctionalfacility INTEGER,
+                other INTEGER
+            );      
+        `;
+        db.exec(outbreakInit);
+        console.log("Outbreak database has been created.");
+    } else {
+        console.log("Outbreak database already exists.");
     }
 }
 

@@ -82,4 +82,15 @@ router.get('/vaccine', (req, res) => {
     }
 })
 
+// define the outbreaks json route
+router.get('/outbreaks', (req, res) => {
+    try {
+        //selects only the 2 most updated case counts
+        const stmt = db.prepare(`SELECT * FROM outbreaks`).all();
+        res.status(200).json(stmt);
+    } catch (e) {
+        console.error(e);
+    }
+})
+
 module.exports = router;

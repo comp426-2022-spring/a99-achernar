@@ -50,7 +50,7 @@ export default class FeaturedStatsVaccine extends Component {
           <span className="featuredTitle">Reported Vaccinations</span>
           <div className="featuredBoxContainer">
             <span className="featuredNum">{DataFormatter(vaccineData[0].totaltwo)}</span>
-            <span className="featuredPrevious">
+            <span className="featuredPreviousVax">
             { ((vaccineData[0].totaltwo / vaccineData[0].totalpopulation) * 100).toFixed(2) } %
             </span>
           </div>
@@ -62,7 +62,7 @@ export default class FeaturedStatsVaccine extends Component {
           <span className="featuredTitle">Reported Booster Vaccines</span>
           <div className="featuredBoxContainer">
             <span className="featuredNum">{DataFormatter(vaccineData[0].totalboost)}</span>
-            <span className="featuredPrevious">
+            <span className="featuredPreviousVax">
             { ((vaccineData[0].totalboost / vaccineData[0].totalpopulation) * 100).toFixed(2) } %
             </span>
           </div>

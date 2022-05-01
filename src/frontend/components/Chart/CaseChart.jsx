@@ -92,7 +92,7 @@ export default class CaseChart extends PureComponent {
             domain={[0, 47000]}
           />
           <Tooltip formatter={DataFormatter}/>
-          <Bar name = "Positive Cases" dataKey="positive" fill="#E05B5B" />
+          <Bar name = "Positive Cases" dataKey="positive" fill="#34046c" /> {/*E05B5B*/}
         </BarChart>
       </ResponsiveContainer>
     );

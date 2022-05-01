@@ -90,7 +90,7 @@ export default class WasteChart extends PureComponent {
             tickFormatter={DataFormatter}
           />
           <Tooltip formatter={DataFormatter}/>
-          <Bar name = "Particles" dataKey="particles" fill="#E05B5B" />
+          <Bar name = "Particles" dataKey="particles" fill="#34046c" />
         </BarChart>
       </ResponsiveContainer>
     );

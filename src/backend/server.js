@@ -135,6 +135,26 @@ if (executed === 0) {
             });
     }
     vaccineEntry();
+
+    function outbreakEntry() {
+        const coolPath = path.join(__dirname, "./data/outbreaks.csv");
+        fs.createReadStream(coolPath)
+            .pipe(parse({ delimiter: ",", from_line: 2 }))
+            .on("data", function (row) {
+                let outbreakdata = {
+                    county: row[0],
+                    nursinghome: row[1],
+                    carefacility: row[2],
+                    correctionalfacility: row[3],
+                    other: row[4]
+                };
+                const stmt = db.prepare(
+                    `INSERT INTO outbreaks (county, nursinghome, carefacility, correctionalfacility, other) VALUES (?, ?, ?, ?, ?)`
+                );
+                stmt.run(Object.values(outbreakdata));
+            });
+    }
+    outbreakEntry();
 }
 
 // set up router for api endpoints (logs, state, county)
