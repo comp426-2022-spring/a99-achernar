@@ -9,8 +9,8 @@ In order to install the appropriate packages with npm, run the command "npm i" i
 To run both the front-end webpage and back-end api together as a complete webapp, run `npm run build`
 
 ### Dev Instructions
-To run only the front-end, run `npm client`
-To run only the back-end, run `npm start`
+To run only the front-end, run `npm client`\
+To run only the back-end, run `npm start`\
 
 ## API Endpoints Documentation
 Full API Documentation can be found under `/docs` directory. 
