@@ -54,7 +54,6 @@ export default class FeaturedStatsVaccine extends Component {
             { ((vaccineData[0].totaltwo / vaccineData[0].totalpopulation) * 100).toFixed(2) } %
             </span>
           </div>
-          {/* <span className="featuredSubtitle">Updated: {vaccineData[0].date}</span> */}
           <span className="featuredSubPrev2">Percent of NC Residents Vaccinated</span>
         </div>
 
@@ -66,7 +65,6 @@ export default class FeaturedStatsVaccine extends Component {
             { ((vaccineData[0].totalboost / vaccineData[0].totalpopulation) * 100).toFixed(2) } %
             </span>
           </div>
-          {/* <span className="featuredSubtitle">Updated: {vaccineData[0].date}</span> */}
           <span className="featuredSubPrev2">Percent of NC Residents with Booster</span>
         </div>
 
