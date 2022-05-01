@@ -90,6 +90,7 @@ export default class CaseChart extends PureComponent {
             }}
             style={{ fontFamily: "Source Sans Pro, sans-serif" }}
             domain={[0, 47000]}
+            tickFormatter={DataFormatter}
           />
           <Tooltip formatter={DataFormatter}/>
           <Bar name = "Positive Cases" dataKey="positive" fill="#34046c" /> {/*E05B5B*/}

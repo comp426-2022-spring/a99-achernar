@@ -161,7 +161,7 @@ if (executed === 0) {
 app.use("/api", router);
 
 // define check endpoint
-app.get("/app/*", (req, res) => {
+app.get("/app", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../frontend/index.html"), err => {
         if (err) {
             console.log(err);

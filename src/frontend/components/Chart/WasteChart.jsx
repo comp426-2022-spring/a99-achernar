@@ -20,6 +20,16 @@ const DataFormatter = (number) => {
   }
 };
 
+const DataFormatterYAxis = (number) => {
+  if (number > 1000000000) {
+    return (number / 1000000000).toFixed(0).toString() + "B";
+  } else if (number > 1000000) {
+    return (number / 1000000).toFixed(0).toString() + "M";
+  } else {
+    return number.toLocaleString('en-US');
+  }
+};
+
 export default class WasteChart extends PureComponent {
   constructor(props) {
     super(props);
@@ -87,7 +97,7 @@ export default class WasteChart extends PureComponent {
               fontWeight: "bold",
             }}
             style={{ fontFamily: "Source Sans Pro, sans-serif" }}
-            tickFormatter={DataFormatter}
+            tickFormatter={DataFormatterYAxis}
           />
           <Tooltip formatter={DataFormatter}/>
           <Bar name = "Particles" dataKey="particles" fill="#34046c" />

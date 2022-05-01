@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import Topbar from "./components/topBar/Topbar";
@@ -21,6 +21,8 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/vaccine" element={<Vaccine />} />
           <Route path="/outbreaks" element={<Outbreaks />} />
+          <Route path="/app" element={<Navigate replace to="/app" />} />
+          <Route path="*" element={<Navigate replace to="/app" />} />
         </Routes>
       </div>
     </div>

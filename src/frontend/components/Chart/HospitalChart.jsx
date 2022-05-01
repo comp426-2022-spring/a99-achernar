@@ -92,6 +92,7 @@ export default class DeathChart extends PureComponent {
             height="100%"
             domain={[0, 5300]}
             tickCount="7"
+            tickFormatter={DataFormatter}
           />
           <Tooltip formatter={DataFormatter} />
           <Line name="Hospitalizations" dataKey="hospitalizations" stroke="#34046c" />
