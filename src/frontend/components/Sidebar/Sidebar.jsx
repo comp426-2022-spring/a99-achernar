@@ -86,7 +86,9 @@ export default function Sidebar() {
                             <span className="sidebarIconBadge">2</span>
                             Messages
                         </li> */}
-                        <li className="SidebarListItem">
+                        <li onClick={() => {
+                             navigate("/county")
+                        }} className="SidebarListItem">
                             <Map className="SidebarIcon" />
                             My County
                         </li>

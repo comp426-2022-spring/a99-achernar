@@ -39,7 +39,7 @@ export default function Users() {
     const [tableData, setTableData] = useState([]);
 
     const getTableData = () => {
-        axios.get("/api/getUserList").then((res) => {
+        axios.get("/app/getUserList").then((res) => {
             if (res.data.code === -1) {
                 alert(res.data.msg)
             } else {

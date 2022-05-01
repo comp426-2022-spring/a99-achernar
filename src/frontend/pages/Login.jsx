@@ -169,7 +169,7 @@ export default function Login(props) {
                 <div style={{
                     marginTop: 40
                 }}>
-                    <Button onClick={handleSubmit} variant="contained">{isLogin ? 'Login in' : 'register'}</Button>
+                    <Button onClick={handleSubmit} variant="contained">{isLogin ? 'Login' : 'register'}</Button>
                 </div>
                 <div style={{
                     textAlign: 'right',
