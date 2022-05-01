@@ -317,3 +317,24 @@ app.post("/app/deleteUser", (req, res) => {
         console.error(e);
     }
 });
+
+// get data on user-specific county
+app.get("/app/getCountyData", (req, res) => {
+    try {
+        const county = db.prepare(`SELECT county FROM accounts WHERE id = '1'`).get().county;
+
+        const rows = db.prepare(`SELECT * FROM counties WHERE county = '` + county + ` '`).all();
+
+        res.status(200).json({
+            code: 200,
+            data: rows,
+            msg: 'Success!'
+        });
+    } catch (e) {
+        res.status(500).json({
+            code: -1,
+            msg: 'server wrong'
+        });
+        console.error(e);
+    }
+});

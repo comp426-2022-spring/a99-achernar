@@ -103,20 +103,15 @@ export default function Sidebar() {
                             <span className="sidebarIconBadge">2</span>
                             Messages
                         </li> */}
-            <li className="SidebarListItem">
-              <Map className="SidebarIcon" />
-              My County
-            </li>
-            <li
-              onClick={() => {
-                navigate("/user");
-              }}
-              className="SidebarListItem"
-            >
-              <Person className="SidebarIcon" />
-              Users
-            </li>
-          </ul>
+                        <li onClick={() => {
+                             navigate("/county")
+                        }} className="SidebarListItem">
+                            <Map className="SidebarIcon" />
+                            My County
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
       </div>
     </div>
