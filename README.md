@@ -4,7 +4,7 @@
 This covid dashboard displays covid information for the state of North Carolina, both at a state and county level. It displays data about a number of areas, including cases, deaths, hospitalizations, etc.
 
 ## Installation and Run Instructions
-
+Navigate to a directory of your choosing and clone this directory with `git clone `.
 In order to install the appropriate packages with npm, run the command `npm i` in the root directory.
 To run both the front-end webpage and back-end api together as a complete webapp, run `npm run build`.
 
