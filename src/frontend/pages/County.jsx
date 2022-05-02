@@ -1,10 +1,11 @@
 import "./Home.css"
-import CountyTable from "../components/Chart/CountyTable";
+// import CountyTable from "../components/Chart/CountyTable";
+import EnterUsername from "./EnterUsername";
 
-export default function Vaccine() {
+export default function County() {
   return (
-    <div className="home">  
-      <CountyTable />
+    <div className="home">
+      <EnterUsername /> 
     </div>
   )
 }

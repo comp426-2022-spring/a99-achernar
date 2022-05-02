@@ -9,6 +9,7 @@ const router = require("./expressRouter");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("../frontend"));
+let usrname = "";
 
 // check if databases have been created
 dbInit();
@@ -318,23 +319,43 @@ app.post("/app/deleteUser", (req, res) => {
     }
 });
 
-// get data on user-specific county
-app.get("/app/getCountyData", (req, res) => {
+app.post("/app/login-user", (req, res) => {
+    let {
+        username
+    } = req.body;
     try {
-        const county = db.prepare(`SELECT county FROM accounts WHERE id = '1'`).get().county;
-
-        const rows = db.prepare(`SELECT * FROM counties WHERE county = '` + county + ` '`).all();
-
+        const row = db.prepare('SELECT * FROM accounts WHERE username=?').get(username);
+        if (!row) {
+            res.status(200).json({
+                code: -1,
+                msg: 'Wrong username.'
+            });
+            return;
+        }
+        usrname = username;
         res.status(200).json({
             code: 200,
-            data: rows,
+            data: row,
             msg: 'Success!'
         });
     } catch (e) {
         res.status(500).json({
             code: -1,
-            msg: 'server wrong'
+            msg: 'The server has encountered an error.'
         });
+        console.error(e);
+    }
+});
+
+// get data on user-specific county
+app.get("/app/getCountyData", (req, res) => {
+    try {
+        const select = db.prepare(`SELECT county FROM accounts WHERE username = ?`).get(usrname);
+        const county = select.county;
+        const rows = db.prepare(`SELECT * FROM counties WHERE county = '` + county + ` '`).all();
+
+        res.status(200).json(rows);
+    } catch (e) {
         console.error(e);
     }
 });
