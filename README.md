@@ -16,7 +16,7 @@ To run only the back-end, run `npm start`.
 Full API Documentation can be found under `/docs` directory. 
 
 ## Team Information
-This Covid Dashboard is implemented by Team Achernar from COMP 426, Spring 2022. Team details can be found under `/docs` directory.
+This Covid Dashboard is implemented by Team Achernar from COMP 426, Spring 2022. Team details can be found under `/docs/plan.txt`.
 
 ## Data Source
 The data used to implement this dashboard is from North Carolina Department of Health and Human Services(NCDHHS), Link to data: https://covid19.ncdhhs.gov/dashboard/data-behind-dashboards
