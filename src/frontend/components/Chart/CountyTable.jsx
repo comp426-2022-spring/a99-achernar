@@ -27,40 +27,6 @@ function CountyTable() {
     getData();
   }, []);
 
-  // return (
-  //     <div className={sty.tableBox}>
-  //             <TableContainer component={Paper}>
-  //             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-  //                 <TableHead>
-  //                     <TableRow>
-  //                         <TableCell>County</TableCell>
-  //                         <TableCell align="right">Date</TableCell>
-  //                         <TableCell align="right">Daily Cases</TableCell>
-  //                         <TableCell align="right">Deaths</TableCell>
-  //                     </TableRow>
-  //                 </TableHead>
-
-  //                 <TableBody>
-
-  //                     {counties.map((row) => (
-  //                         <TableRow
-  //                             key={row.county}
-  //                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-  //                         >
-  //                             <TableCell component="th" scope="row">
-  //                                 {row.county}
-  //                             </TableCell>
-  //                             <TableCell align="right">{row.date}</TableCell>
-  //                             <TableCell align="right">{row.dailycases}</TableCell>
-  //                             <TableCell align="right">{row.deaths}</TableCell>
-  //                         </TableRow>
-  //                     ))}
-  //                 </TableBody>
-  //             </Table>
-  //         </TableContainer>
-  //     </div>
-  // )
-
   const columns = [
     { field: "county", headerName: "County", width: "300" },
     { field: "date", headerName: "Date", width: "300" },
