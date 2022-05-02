@@ -48,3 +48,8 @@ UPDATE 4 (4/25)
 All of the code more or less works, it is time to prepare the project for submission (i.e., meeting all of the requirements)
 Isaac has begun work on beefing up the documentation
 When the code is finalized, all members will record a demo video to submit in the final submission
+
+UPDATE 5 (5/1)
+Hugo connected the login endpoint and set up the "my county" page.
+Brandan set up the pages for FAQ, Symptoms and adapted the login interface for "my county"
+All good to submit!
