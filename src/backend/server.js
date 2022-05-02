@@ -236,6 +236,7 @@ app.post("/app/register", (req, res) => {
             emailaddr,
             age,
             county);
+        usrname = username;
         res.status(200).json({
             code: 200,
             msg: 'Success!'
@@ -261,8 +262,22 @@ app.get("/app/getUserList", (req, res) => {
     } catch (e) {
         res.status(500).json({
             code: -1,
-            msg: 'server wrong'
+            msg: 'The server encountered an error.'
         });
+        console.error(e);
+    }
+});
+
+// get specific account info data
+app.get("/app/userAccountData", (req, res) => {
+    try {
+        const rows = db.prepare(`SELECT name, username, password, emailaddr, age, county FROM accounts WHERE username = ?`).all(usrname);
+        res.status(200).json({
+            code: 200,
+            data: rows,
+            msg: 'Success!'
+        });
+    } catch (e) {
         console.error(e);
     }
 });
@@ -270,20 +285,22 @@ app.get("/app/getUserList", (req, res) => {
 // update
 app.post("/app/updateUser", (req, res) => {
     let {
-        id,
         name,
+        username,
         emailaddr,
         age,
         county
     } = req.body;
     try {
         const stmt = db.prepare(
-            `UPDATE accounts SET name=?, emailaddr=?, age=?, county=? WHERE id=?`
+            `UPDATE accounts SET name=?, username=?, emailaddr=?, age=?, county=? WHERE username=?`
         );
         stmt.run(name,
+            username,
             emailaddr,
             age,
-            county, id);
+            county, username);
+        usrname = username;
         res.status(200).json({
             code: 200,
             msg: 'Success!'
@@ -300,13 +317,14 @@ app.post("/app/updateUser", (req, res) => {
 // delete
 app.post("/app/deleteUser", (req, res) => {
     let {
-        id
+        username
     } = req.body;
     try {
         const stmt = db.prepare(
-            `DELETE FROM accounts WHERE id=?`
+            `DELETE FROM accounts WHERE username=?`
         );
-        stmt.run(id);
+        stmt.run(username);
+        usrname = username;
         res.status(200).json({
             code: 200,
             msg: 'Success!'
@@ -354,17 +372,6 @@ app.get("/app/getCountyData", (req, res) => {
         const select = db.prepare(`SELECT county FROM accounts WHERE username = ?`).get(usrname);
         const county = select.county;
         const rows = db.prepare(`SELECT * FROM counties WHERE county = '` + county + ` '`).all();
-
-        res.status(200).json(rows);
-    } catch (e) {
-        console.error(e);
-    }
-});
-
-// get specific account info data
-app.get("/app/userAccountData", (req, res) => {
-    try {
-        const rows = db.prepare(`SELECT name, username, password, emailaddr, age, county FROM accounts WHERE username = ?`).all(usrname);
 
         res.status(200).json(rows);
     } catch (e) {

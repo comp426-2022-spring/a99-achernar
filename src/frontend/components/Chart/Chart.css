@@ -52,6 +52,11 @@
     aspect-ratio: 2.6/1;
 }
 
+.gridStyle2 {
+    width: 100%;
+    aspect-ratio: 1.89/1;
+}
+
 .vaccineGridStyle {
     width: 100%;
     aspect-ratio: 5/1;

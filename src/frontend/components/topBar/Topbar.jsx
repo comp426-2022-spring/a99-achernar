@@ -1,25 +1,26 @@
-import React from 'react'
-import "./Topbar.css"
-import {Settings} from '@mui/icons-material';
+import React from "react";
+import "./Topbar.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Topbar() {
+  let navigate = useNavigate();
   return (
-    <div className='Topbar'>
-        <div className="topbarWrapper">
-            <div className="topLeft">
-                <span className="logo">North Carolina COVID-19 Dashboard</span>
-            </div>
-            <div className="topRight">
-                <div className="topbarIcons">
-                    {/*<NotificationsNone />*/}
-                    {/*<span className="topbarIconBadge">2</span>*/}
-                </div>
-                <div className="topbarIcons">
-                    <Settings />
-                </div>
-                <img src="https://i.pinimg.com/736x/00/70/16/00701602b0eac0390b3107b9e2a665e0.jpg" alt="" className="topPFP" />
-            </div>
+    <div className="Topbar">
+      <div className="topbarWrapper">
+        <div className="topLeft">
+          <span className="logo">North Carolina COVID-19 Dashboard</span>
         </div>
+        <div className="topRight">
+          <img
+            onClick={() => {
+              navigate("/account-login");
+            }}
+            src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+            alt=""
+            className="topPFP"
+          />
+        </div>
+      </div>
     </div>
-  )
+  );
 }

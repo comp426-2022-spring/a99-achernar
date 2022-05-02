@@ -5,7 +5,6 @@ import Home from "./pages/Home";
 import Topbar from "./components/topBar/Topbar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Login from "./pages/Login";
-import User from "./pages/Users";
 import Vaccine from "./pages/Vaccine";
 import Outbreaks from "./pages/Outbreaks";
 import News from "./pages/News"
@@ -23,10 +22,8 @@ function App() {
         <Sidebar />
         <Routes>
           <Route exact path="/app" element={<Home />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/county" element={<County />} />
           <Route path="/county-user" element={<CountyUser />} />
-          <Route path="/user" element={<User />} />
           <Route path="/vaccine" element={<Vaccine />} />
           <Route path="/outbreaks" element={<Outbreaks />} />
           <Route path="/news" element={<News />} />

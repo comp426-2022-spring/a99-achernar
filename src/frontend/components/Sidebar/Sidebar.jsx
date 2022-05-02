@@ -4,10 +4,9 @@ import {
   Equalizer,
   Newspaper,
   List,
-  /*ChatBubble,*/ Map,
+  Map,
   Coronavirus,
   Healing,
-  Person,
   Login,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
@@ -93,20 +92,11 @@ export default function Sidebar() {
           <ul className="SidebarList">
             <li
               onClick={() => {
-                navigate("/login");
-              }}
-              className="SidebarListItem"
-            >
-              <Login className="SidebarIcon" />
-              Login
-            </li>
-            <li
-              onClick={() => {
                 navigate("/account-login");
               }}
               className="SidebarListItem"
             >
-              <Home className="SidebarIcon" />
+              <Login className="SidebarIcon" />
               My Account
             </li>
             <li
@@ -117,15 +107,6 @@ export default function Sidebar() {
             >
               <Map className="SidebarIcon" />
               My County
-            </li>
-            <li
-              onClick={() => {
-                navigate("/user");
-              }}
-              className="SidebarListItem"
-            >
-              <Person className="SidebarIcon" />
-              Users
             </li>
           </ul>
         </div>
