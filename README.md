@@ -12,6 +12,11 @@ To run both the front-end webpage and back-end api together as a complete webapp
 To run only the front-end, run `npm client`.\
 To run only the back-end, run `npm start`.
 
+## Demo
+| Team Name | Demo video link | Project repo | 
+|:--- |:--- |:--- |
+| Achernar | https://www.youtube.com/watch?v=CNQWKvCJ6-k | https://github.com/comp426-2022-spring/a99-achernar |
+
 ## API Endpoints Documentation
 Full API Documentation can be found under `/docs` directory. 
 
