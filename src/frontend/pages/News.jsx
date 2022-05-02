@@ -48,7 +48,7 @@ export default class News extends Component {
       method: "GET",
       url: "https://bing-news-search1.p.rapidapi.com/news/search",
       params: {
-        q: "Coronavirus North Carolina",
+        q: "Coronavirus",
         freshness: "Day",
         textFormat: "Raw",
         safeSearch: "Off",

@@ -63,7 +63,12 @@ export default function Sidebar() {
               <Newspaper className="SidebarIcon" />
               News
             </li>
-            <li className="SidebarListItem">
+            <li
+              onClick={() => {
+                navigate("/FAQ");
+              }}
+              className="SidebarListItem"
+            >
               <List className="SidebarIcon" />
               FAQ
             </li>
@@ -71,7 +76,12 @@ export default function Sidebar() {
                         <Map className="SidebarIcon"/>
                         Testing Sites
                     </li>*/}
-            <li className="SidebarListItem">
+            <li
+              onClick={() => {
+                navigate("/symptoms");
+              }}
+              className="SidebarListItem"
+            >
               <Healing className="SidebarIcon" />
               Symptoms
             </li>
@@ -90,7 +100,12 @@ export default function Sidebar() {
               <Login className="SidebarIcon" />
               Login
             </li>
-            <li className="SidebarListItem">
+            <li
+              onClick={() => {
+                navigate("/account");
+              }}
+              className="SidebarListItem"
+            >
               <Home className="SidebarIcon" />
               My Account
             </li>
