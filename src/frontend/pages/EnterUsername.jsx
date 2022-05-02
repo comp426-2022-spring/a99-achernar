@@ -32,7 +32,7 @@ export default function EnterUsername() {
   return login ? (
     <CountyTable />
   ) : (
-    <div className={sty.box2}>
+    <div className={sty.box}>
       <div className={sty.loginBox}>
         <h1 className={sty.h1}>{"Please enter your username"}</h1>
         <Box

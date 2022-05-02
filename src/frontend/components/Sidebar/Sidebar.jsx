@@ -102,7 +102,7 @@ export default function Sidebar() {
             </li>
             <li
               onClick={() => {
-                navigate("/account");
+                navigate("/account-login");
               }}
               className="SidebarListItem"
             >

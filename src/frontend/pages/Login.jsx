@@ -41,7 +41,7 @@ export default function Login(props) {
                     alert(res.data.msg)
                 } else {
                     alert(res.data.msg)
-                    navigate("/")
+                    navigate("/account")
                 }
             }).catch(() => {
                 alert("An error has occurred.")

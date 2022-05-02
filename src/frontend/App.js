@@ -12,6 +12,7 @@ import News from "./pages/News"
 import County from "./pages/County";
 import FAQ from "./pages/FAQ";
 import Symptoms from "./pages/Symptoms"
+import MyAccount from "./pages/MyAccount";
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/symptoms" element={<Symptoms />} />
-          <Route path="/account" element={<Outbreaks />} />
+          <Route path="/account-login" element={<Login />} />
+          <Route path="/account" element={<MyAccount />} />
           <Route path="/app" element={<Navigate replace to="/app" />} />
           <Route path="*" element={<Navigate replace to="/app" />} />
         </Routes>

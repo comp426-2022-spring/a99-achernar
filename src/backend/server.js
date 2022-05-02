@@ -189,10 +189,11 @@ app.post("/app/login", (req, res) => {
         if (!row) {
             res.status(200).json({
                 code: -1,
-                msg: 'wrong account or password'
+                msg: 'Wrong username or password.'
             });
             return;
         }
+        usrname = username;
         res.status(200).json({
             code: 200,
             data: row,
@@ -201,7 +202,7 @@ app.post("/app/login", (req, res) => {
     } catch (e) {
         res.status(500).json({
             code: -1,
-            msg: 'server wrong'
+            msg: 'The server encountered an error.'
         });
         console.error(e);
     }
@@ -222,7 +223,7 @@ app.post("/app/register", (req, res) => {
         if (row) {
             res.status(200).json({
                 code: -1,
-                msg: 'username already exists'
+                msg: 'Username already exists.'
             });
             return;
         }
@@ -242,7 +243,7 @@ app.post("/app/register", (req, res) => {
     } catch (e) {
         res.status(500).json({
             code: -1,
-            msg: 'server wrong'
+            msg: 'The server encountered an error.'
         });
         console.error(e);
     }
@@ -353,6 +354,17 @@ app.get("/app/getCountyData", (req, res) => {
         const select = db.prepare(`SELECT county FROM accounts WHERE username = ?`).get(usrname);
         const county = select.county;
         const rows = db.prepare(`SELECT * FROM counties WHERE county = '` + county + ` '`).all();
+
+        res.status(200).json(rows);
+    } catch (e) {
+        console.error(e);
+    }
+});
+
+// get specific account info data
+app.get("/app/userAccountData", (req, res) => {
+    try {
+        const rows = db.prepare(`SELECT name, username, password, emailaddr, age, county FROM accounts WHERE username = ?`).all(usrname);
 
         res.status(200).json(rows);
     } catch (e) {
