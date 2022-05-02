@@ -63,7 +63,7 @@ export default function Users() {
             setAge(currentItem.age)
             setCounty(currentItem.county)
         }
-    }, [open])
+    }, [currentItem, open])
 
     return (
         <div style={{

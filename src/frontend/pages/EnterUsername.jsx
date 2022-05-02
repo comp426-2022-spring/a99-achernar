@@ -1,15 +1,16 @@
 import React from "react";
-import CountyTable from "../components/Chart/CountyTable";
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import sty from "./login.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function EnterUsername() {
   const [username, setUsername] = useState("");
   const [login, setLogin] = useState(false);
+  let navigate = useNavigate();
 
   const handleSubmit = () => {
     axios
@@ -30,7 +31,7 @@ export default function EnterUsername() {
   };
 
   return login ? (
-    <CountyTable />
+    navigate("/county-user")
   ) : (
     <div className={sty.box}>
       <div className={sty.loginBox}>

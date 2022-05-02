@@ -13,6 +13,7 @@ import County from "./pages/County";
 import FAQ from "./pages/FAQ";
 import Symptoms from "./pages/Symptoms"
 import MyAccount from "./pages/MyAccount";
+import CountyUser from "./pages/CountyUser"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/app" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/county" element={<County />} />
+          <Route path="/county-user" element={<CountyUser />} />
           <Route path="/user" element={<User />} />
           <Route path="/vaccine" element={<Vaccine />} />
           <Route path="/outbreaks" element={<Outbreaks />} />
