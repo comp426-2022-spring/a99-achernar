@@ -1,10 +1,10 @@
 import "./Home.css"
-// import CountyTable from "../components/Chart/CountyTable";
 import EnterUsername from "./EnterUsername";
+// import sty from "./login.module.css";
 
 export default function County() {
   return (
-    <div className="home">
+    <div>
       <EnterUsername /> 
     </div>
   )

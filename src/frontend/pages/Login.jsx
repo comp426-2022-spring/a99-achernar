@@ -37,7 +37,7 @@ export default function Login(props) {
                 username,
                 password
             }).then((res) => {
-                if (res.data.code == -1) {
+                if (res.data.code === -1) {
                     alert(res.data.msg)
                 } else {
                     alert(res.data.msg)
@@ -54,7 +54,7 @@ export default function Login(props) {
                 password,
                 name, emailaddr, age, county
             }).then((res) => {
-                if (res.data.code == -1) {
+                if (res.data.code === -1) {
                     alert(res.data.msg)
                 } else {
                     alert(res.data.msg)

@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import sty from "../../pages/login.module.css";
 
 function CountyTable() {
 
@@ -28,9 +29,7 @@ function CountyTable() {
     }, []);
 
     return (
-        <div style={{
-            flex: 4
-          }}>
+        <div className={sty.tableBox}>
                 <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>

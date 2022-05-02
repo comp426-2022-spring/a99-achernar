@@ -20,6 +20,7 @@ function App() {
         <Routes>
           <Route exact path="/app" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/county" element={<County />} />
           <Route path="/user" element={<User />} />
           <Route path="/vaccine" element={<Vaccine />} />
           <Route path="/outbreaks" element={<Outbreaks />} />
@@ -28,7 +29,6 @@ function App() {
           <Route path="/symptoms" element={<Outbreaks />} />
           <Route path="/app" element={<Navigate replace to="/app" />} />
           <Route path="*" element={<Navigate replace to="/app" />} />
-          <Route path="/county" element={<County />} />
         </Routes>
       </div>
     </div>
