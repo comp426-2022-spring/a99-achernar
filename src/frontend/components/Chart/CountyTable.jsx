@@ -36,12 +36,12 @@ function CountyTable() {
   return (
     <div className="chartContainer">
       <div className="vaccineChart">
-        <h2 className="caseTitle">Vaccination Records by County</h2>
+        <h2 className="caseTitle">Case and Death Records by County</h2>
         <div className="gridStyle2">
           <DataGrid
             rows={counties}
             columns={columns}
-            pageSize={12}
+            pageSize={17}
             disableSelectionOnClick
           />
         </div>

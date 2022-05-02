@@ -35,3 +35,18 @@
     -webkit-box-shadow: -5px 5px 8px 5px #D0D1CA; 
     box-shadow: -5px 5px 8px 5px #D0D1CA; /*#6cbceb*/
 }
+.box2{
+	width: 79.25vw;
+	height: 100vh;
+	background: rgb(164,90,82);
+	background: linear-gradient(0deg, rgba(164,90,82,1) 0%, rgba(255,92,88,1) 50%, rgba(135,2,2,1) 100%);
+	display: flex;
+	flex: 4;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.wrapper {
+	flex: 4;
+	height: 100vh;
+}

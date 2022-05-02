@@ -14,6 +14,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import sty from "./user.module.css";
+import "./Home.css";
 
 export default function MyAccount() {
   const [open, setOpen] = useState(false);
@@ -66,12 +67,8 @@ export default function MyAccount() {
   }, [currentItem, open]);
 
   return (
-    <div
-      style={{
-        flex: 4,
-      }}
-    >
-      <div className={sty.box}>
+    <div className="home">
+      <div className={sty.box2}>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Edit User</DialogTitle>
           <DialogContent>
@@ -209,7 +206,7 @@ export default function MyAccount() {
                         // delete
                         axios
                           .post("/app/deleteUser", {
-                            username: row.username
+                            username: row.username,
                           })
                           .then((res) => {
                             if (res.data.code === -1) {

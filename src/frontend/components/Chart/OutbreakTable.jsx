@@ -46,7 +46,7 @@ export default class OutbreakTable extends PureComponent {
         return (
             <div className="chartContainer">
                 <div className="vaccineChart">
-                    <div className="vaccineGridStyle"><DataGrid density='compact' rows={data} columns={columns} pageSize={5} disableSelectionOnClick/></div> 
+                    <div className="vaccineGridStyle"><DataGrid density='compact' rows={data} columns={columns} pageSize={7} disableSelectionOnClick/></div> 
                 </div>
             </div>
         );

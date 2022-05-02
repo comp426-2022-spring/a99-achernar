@@ -46,7 +46,7 @@ export default class VaccineTable extends PureComponent {
             <div className="chartContainer">
                 <div className="vaccineChart">
                     <h2 className="caseTitle">Vaccination Records by County</h2>
-                    <div className="gridStyle"><DataGrid rows={data} columns={columns} pageSize={8} disableSelectionOnClick/></div> 
+                    <div className="gridStyle"><DataGrid rows={data} columns={columns} pageSize={11} disableSelectionOnClick/></div> 
                 </div>
             </div>
         );
