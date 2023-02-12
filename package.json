@@ -22,7 +22,7 @@
     "express": "^4.17.3",
     "fs": "^0.0.1-security",
     "node-csv": "^0.1.2",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.20",
     "path": "^0.12.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
